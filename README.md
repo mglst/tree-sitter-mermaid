@@ -458,6 +458,8 @@ npm install tree-sitter-mermaid
 pip install tree-sitter-mermaid
 ```
 
+> **Note**: Python bindings currently use tree-sitter 0.25.2 (latest on PyPI). The parser is generated with tree-sitter 0.26.3 CLI and is fully compatible.
+
 ### Go
 ```bash
 go get github.com/Singularity-ng/singularity-parser-mermaid

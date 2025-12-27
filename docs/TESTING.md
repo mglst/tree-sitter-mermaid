@@ -370,6 +370,8 @@ Python doesn't have dedicated test files but uses corpus tests via setup.
 - `setup.py` - Setup script for building C extension
 - `pyproject.toml` - Modern Python project config (tree-sitter version 0.25.2)
 
+**Note**: Python bindings use tree-sitter 0.25.2 (the latest available on PyPI as of December 2025) while other bindings use 0.26.x. The parser itself is generated with tree-sitter 0.26.3 CLI and is fully compatible.
+
 #### What Gets Tested
 - C extension compilation
 - Python binding functionality
