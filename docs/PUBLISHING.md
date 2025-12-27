@@ -37,7 +37,7 @@ See workflows in `.github/workflows/publish-*.yml`
 Before publishing to any registry:
 
 - [ ] All tests passing (`make test`) - Currently: ✅ 133/133
-- [ ] tree-sitter versions consistent (0.25.x everywhere)
+- [ ] tree-sitter versions consistent (0.26.x everywhere)
 - [ ] Documentation up-to-date (README, ARCHITECTURE, etc.)
 - [ ] CHANGELOG updated with release notes
 - [ ] Version numbers synchronized across all files

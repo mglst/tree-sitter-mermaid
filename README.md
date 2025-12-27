@@ -6,7 +6,7 @@
 [![Diagram Coverage](https://img.shields.io/badge/coverage-23%2F23%20types-brightgreen)](docs/ARCHITECTURE.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Mermaid Version](https://img.shields.io/badge/Mermaid-11.12.0-blueviolet.svg)](https://mermaid.js.org/)
-[![tree-sitter](https://img.shields.io/badge/tree--sitter-0.25-green)](https://tree-sitter.github.io/tree-sitter/)
+[![tree-sitter](https://img.shields.io/badge/tree--sitter-0.26-green)](https://tree-sitter.github.io/tree-sitter/)
 [![npm](https://img.shields.io/npm/v/tree-sitter-mermaid)](https://www.npmjs.com/package/tree-sitter-mermaid)
 [![PyPI](https://img.shields.io/pypi/v/tree-sitter-mermaid)](https://pypi.org/project/tree-sitter-mermaid/)
 [![crates.io](https://img.shields.io/crates/v/tree-sitter-mermaid)](https://crates.io/crates/tree-sitter-mermaid)
@@ -28,7 +28,7 @@ Singularity maintains this distribution, led by [Mikael Hugo](https://github.com
 - 🚀 **Complete Mermaid Support** - All 23 diagram types fully implemented with comprehensive parsing
 - 🎯 **100% Test Passing** - 133 comprehensive corpus tests across all diagram types
 - ✅ **23/23 Diagram Types Supported** - Full coverage of Mermaid specification with complete grammar
-- 🦀 **Modern Rust & Tree-sitter** - Latest stable versions (Rust 2021, tree-sitter 0.25)
+- 🦀 **Modern Rust & Tree-sitter** - Latest stable versions (Rust 2021, tree-sitter 0.26)
 - 📊 **Multiple Language Bindings** - Rust, Node.js, Python, Go, Swift, C
 - 🎨 **Syntax Highlighting** - Query files for Neovim, Helix, and other tree-sitter editors
 - 🧪 **Automated Testing** - Corpus-based test suite with full spec coverage
@@ -439,7 +439,7 @@ func main() {
 Add to `Cargo.toml`:
 ```toml
 [dependencies]
-tree-sitter-mermaid = "0.25"
+tree-sitter-mermaid = "0.26"
 ```
 
 Or from git:
