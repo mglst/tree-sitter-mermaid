@@ -41,7 +41,8 @@ mermaid-examples/
 
 # Node.js
 node_modules/
-package-lock.json*.tgz
+package-lock.json
+*.tgz
 
 # Python
 __pycache__/
