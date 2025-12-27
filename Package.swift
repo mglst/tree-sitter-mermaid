@@ -86,7 +86,6 @@ let package = Package(
                 "dist",
                 "docs",
             ],
-            ],
             sources: [
                 "src/parser.c",
                 "src/scanner.c",
