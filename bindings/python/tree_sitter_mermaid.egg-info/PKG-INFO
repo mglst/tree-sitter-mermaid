@@ -20,9 +20,9 @@ Dynamic: license-file
 # 🚀 Singularity TreeSitter Mermaid - tree-sitter-mermaid
 
 [![CI](https://github.com/Singularity-ng/singularity-parser-mermaid/actions/workflows/ci.yml/badge.svg)](https://github.com/Singularity-ng/singularity-parser-mermaid/actions/workflows/ci.yml)
-[![Production Ready](https://img.shields.io/badge/status-production%20ready-brightgreen)](docs/PRODUCTION_READINESS.md)
-[![Tests Passing](https://img.shields.io/badge/tests-133%2F133%20passing-brightgreen)](docs/TESTING.md)
-[![Diagram Coverage](https://img.shields.io/badge/coverage-23%2F23%20types-brightgreen)](docs/ARCHITECTURE.md)
+    [![Production Ready](https://img.shields.io/badge/status-production%20ready-brightgreen)](https://github.com/Singularity-ng/singularity-parser-mermaid/blob/main/docs/PRODUCTION_READINESS.md)
+    [![Tests Passing](https://img.shields.io/badge/tests-133%2F133%20passing-brightgreen)](https://github.com/Singularity-ng/singularity-parser-mermaid/blob/main/docs/TESTING.md)
+    [![Diagram Coverage](https://img.shields.io/badge/coverage-23%2F23%20types-brightgreen)](https://github.com/Singularity-ng/singularity-parser-mermaid/blob/main/docs/ARCHITECTURE.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Mermaid Version](https://img.shields.io/badge/Mermaid-11.12.2-blueviolet.svg)](https://mermaid.js.org/)
 [![tree-sitter](https://img.shields.io/badge/tree--sitter-0.26-green)](https://tree-sitter.github.io/tree-sitter/)
