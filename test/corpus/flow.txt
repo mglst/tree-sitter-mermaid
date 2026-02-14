@@ -787,3 +787,93 @@ graph LR
       (flow_node
         (flow_vertex
           (flow_vertex_id))))))
+
+==========================
+Invisible link (basic)
+==========================
+
+flowchart TD
+    A[Start] ~~~ B[End]
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_square
+            (flow_text_literal))))
+      (flow_link_invisible_link
+        (flow_link_invisible))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_square
+            (flow_text_literal)))))))
+
+==========================
+Invisible link (longer, affects layout weight)
+==========================
+
+flowchart LR
+    A ~~~~~ B
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_lr)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)))
+      (flow_link_invisible_link
+        (flow_link_invisible))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))))
+
+==========================
+Mixed visible and invisible links
+==========================
+
+flowchart TD
+    A --> B
+    A ~~~ C
+    B --> C
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)))
+      (flow_link_simplelink
+        (flow_link_arrow))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)))
+      (flow_link_invisible_link
+        (flow_link_invisible))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)))
+      (flow_link_simplelink
+        (flow_link_arrow))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))))

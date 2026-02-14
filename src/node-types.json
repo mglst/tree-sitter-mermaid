@@ -156,6 +156,10 @@
         "named": true
       },
       {
+        "type": "flow_link_invisible_link",
+        "named": true
+      },
+      {
         "type": "flow_link_middletext",
         "named": true
       },
@@ -1482,6 +1486,21 @@
         },
         {
           "type": "flow_link_arrow",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "flow_link_invisible_link",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "flow_link_invisible",
           "named": true
         }
       ]
@@ -3961,6 +3980,10 @@
   {
     "type": "fk",
     "named": false
+  },
+  {
+    "type": "flow_link_invisible",
+    "named": true
   },
   {
     "type": "flowchart",

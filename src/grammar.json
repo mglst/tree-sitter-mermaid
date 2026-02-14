@@ -3163,6 +3163,10 @@
         {
           "type": "SYMBOL",
           "name": "flow_link_middletext"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "flow_link_invisible_link"
         }
       ]
     },
@@ -3172,6 +3176,15 @@
         {
           "type": "SYMBOL",
           "name": "flow_link_arrow"
+        }
+      ]
+    },
+    "flow_link_invisible_link": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "flow_link_invisible"
         }
       ]
     },
@@ -7606,6 +7619,17 @@
           "value": "[xo<]?-\\.+"
         }
       ]
+    },
+    "flow_link_invisible": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "PATTERN",
+          "value": "~~~[~]*"
+        }
+      }
     },
     "_er_word": {
       "type": "PATTERN",

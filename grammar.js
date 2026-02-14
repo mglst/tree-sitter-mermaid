@@ -148,6 +148,7 @@ const tokens = {
         /[xo<]?==+/,
         /[xo<]?-\.+/,
     ),
+    flow_link_invisible: token(prec(1, /~~~[~]*/)),
 
     /// tokens in ER diagram
     _er_word: /"[^"]*"/,
@@ -734,9 +735,11 @@ module.exports = grammar({
             $.flow_link_simplelink,
             $.flow_link_arrowtext,
             $.flow_link_middletext,
+            $.flow_link_invisible_link,
         ),
 
         flow_link_simplelink: $ => seq($.flow_link_arrow),
+        flow_link_invisible_link: $ => seq($.flow_link_invisible),
         flow_link_arrowtext: $ => seq($.flow_link_arrow, "|", $.flow_arrow_text, "|"),
         flow_link_middletext: $ => seq(
             $.flow_link_arrow_start,

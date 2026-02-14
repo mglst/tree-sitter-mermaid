@@ -350,6 +350,7 @@
 (flow_link_middletext) @operator
 (flow_link_arrow) @operator
 (flow_link_arrow_start) @operator
+(flow_link_invisible) @operator
 
 ; Explicit flow arrow tokens
 "-->" @operator
