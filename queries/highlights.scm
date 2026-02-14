@@ -43,6 +43,7 @@
 
 ; Diagram type keywords - the main diagram declarations
 "flowchart" @keyword
+"graph" @keyword
 "sequenceDiagram" @keyword
 "classDiagram" @keyword
 "classDiagram-v2" @keyword
