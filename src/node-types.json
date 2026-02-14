@@ -3983,6 +3983,10 @@
     "named": false
   },
   {
+    "type": "graph",
+    "named": false
+  },
+  {
     "type": "hide empty description",
     "named": false
   },

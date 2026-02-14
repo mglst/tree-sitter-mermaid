@@ -698,7 +698,7 @@ module.exports = grammar({
 
         /// flow chart
         diagram_flow: $ => seq(
-            kwd("flowchart"),
+            choice(kwd("flowchart"), kwd("graph")),
             choice(
                 $._flowchart_direction,
                 $._newline,
