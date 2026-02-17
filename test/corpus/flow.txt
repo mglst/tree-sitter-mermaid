@@ -922,3 +922,66 @@ flowchart LR
           (flow_vertex_id))))
     (ERROR
       (UNEXPECTED 'j'))))
+
+==========================
+Subgraph with id[label] form
+==========================
+
+flowchart TD
+    subgraph SubGraph[Label]
+    end
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)
+    (flow_stmt_subgraph
+      (flow_vertex_text)
+      (flow_vertex_text))))
+
+==========================
+direction as node ID
+==========================
+
+flowchart TD
+    direction[Label] --> B[Label 2]
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id
+            (_flow_vertex_id_token))
+          (flow_vertex_square
+            (flow_text_literal))))
+      (flow_link_simplelink
+        (flow_link_arrow))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_square
+            (flow_text_literal)))))))
+
+==========================
+Node annotation @{} syntax
+==========================
+
+flowchart TD
+    A@{ shape: circle }
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_annotation
+            (flow_vertex_annotation_body)))))))

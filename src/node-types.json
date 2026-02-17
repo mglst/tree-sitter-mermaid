@@ -192,6 +192,10 @@
     "named": true,
     "subtypes": [
       {
+        "type": "flow_vertex_annotation",
+        "named": true
+      },
+      {
         "type": "flow_vertex_circle",
         "named": true
       },
@@ -1587,10 +1591,6 @@
           "named": true
         },
         {
-          "type": "flow_vertex_id",
-          "named": true
-        },
-        {
           "type": "flow_vertex_text",
           "named": true
         }
@@ -1655,6 +1655,21 @@
         },
         {
           "type": "flow_vertex_id",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "flow_vertex_annotation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "flow_vertex_annotation_body",
           "named": true
         }
       ]
@@ -1778,7 +1793,17 @@
   {
     "type": "flow_vertex_id",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "_flow_vertex_id_token",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "flow_vertex_inv_trapezoid",
@@ -3757,6 +3782,10 @@
     "named": false
   },
   {
+    "type": "@{",
+    "named": false
+  },
+  {
     "type": "C4Component",
     "named": false
   },
@@ -3835,6 +3864,10 @@
   {
     "type": "^",
     "named": false
+  },
+  {
+    "type": "_flow_vertex_id_token",
+    "named": true
   },
   {
     "type": "activate",
@@ -4047,6 +4080,10 @@
   },
   {
     "type": "flow_text_icon",
+    "named": true
+  },
+  {
+    "type": "flow_vertex_annotation_body",
     "named": true
   },
   {

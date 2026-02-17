@@ -137,6 +137,7 @@ const tokens = {
     flow_text_quoted: (/"[^"]*"/),
     flow_text_icon: token(prec(1, /[a-zA-Z]+:[a-zA-Z][a-zA-Z0-9]*(-[a-zA-Z][a-zA-Z0-9]*)*([ \t]+[a-zA-Z0-9_~!?]+)*/)),
     _flow_vertex_id_token: token(prec(-1, /[a-zA-Z0-9_~!?]+(-[a-zA-Z0-9_~!?]+)*/)),
+    flow_vertex_annotation_body: /[^}]*/,
 
     // 適当
     flow_link_arrow: choice(
@@ -249,6 +250,13 @@ module.exports = grammar({
 
     externals: $ => [
         $.class_reltype_aggregation,  // Handled by external scanner
+    ],
+
+    conflicts: $ => [
+        // "direction" can be a keyword (flow_stmt_direction) or a vertex id
+        // (flow_vertex_id). GLR explores both; prec(1) on flow_stmt_direction
+        // resolves the case where both are valid (e.g. `direction LR`).
+        [$.flow_stmt_direction, $.flow_vertex_id],
     ],
 
     extras: $ => [
@@ -723,7 +731,7 @@ module.exports = grammar({
             // $.flow_stmt_classdef,
             // $.flow_stmt_class,
             $.flow_stmt_subgraph,
-            $.flow_stmt_direction,
+            prec(1, $.flow_stmt_direction),
         ),
 
         flow_stmt_direction: $ => seq(kwd("direction"), $._flowchart_direction),
@@ -749,7 +757,10 @@ module.exports = grammar({
         ),
         flow_arrow_text: $ => repeat1($._alpha_num_token),
 
-        flow_vertex_id: $ => $._flow_vertex_id_token,
+        flow_vertex_id: $ => choice(
+            $._flow_vertex_id_token,
+            alias(kwd("direction"), $._flow_vertex_id_token),
+        ),
 
         flow_vertex: $ => seq(
             $.flow_vertex_id,
@@ -771,7 +782,9 @@ module.exports = grammar({
             $.flow_vertex_inv_trapezoid,
             $.flow_vertex_leanright,
             $.flow_vertex_leanleft,
+            $.flow_vertex_annotation,
         ),
+        flow_vertex_annotation: $ => seq("@{", $.flow_vertex_annotation_body, "}"),
         flow_vertex_square: $ => seq( "[", $._flow_text, "]" ),
         flow_vertex_circle: $ => seq("((", $._flow_text, "))"),
         flow_vertex_ellipse: $ => seq( "(-", $._flow_text, "-)" ),
@@ -792,9 +805,9 @@ module.exports = grammar({
         flow_stmt_subgraph: $ => seq(
             "subgraph",
             optional(
-                choice(
-                    seq($.flow_vertex_id, "[", $.flow_vertex_text, "]",),
-                    seq($.flow_vertex_text),
+                seq(
+                    $.flow_vertex_text,
+                    optional(seq("[", $.flow_vertex_text, "]")),
                 ),
             ),
             choice(";", $._newline),

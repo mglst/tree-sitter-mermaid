@@ -3069,8 +3069,12 @@
           "name": "flow_stmt_subgraph"
         },
         {
-          "type": "SYMBOL",
-          "name": "flow_stmt_direction"
+          "type": "PREC",
+          "value": 1,
+          "content": {
+            "type": "SYMBOL",
+            "name": "flow_stmt_direction"
+          }
         }
       ]
     },
@@ -3234,8 +3238,34 @@
       }
     },
     "flow_vertex_id": {
-      "type": "SYMBOL",
-      "name": "_flow_vertex_id_token"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_flow_vertex_id_token"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": 1,
+                "content": {
+                  "type": "PATTERN",
+                  "value": "[dD][iI][rR][eE][cC][tT][iI][oO][nN]"
+                }
+              }
+            },
+            "named": false,
+            "value": "direction"
+          },
+          "named": true,
+          "value": "_flow_vertex_id_token"
+        }
+      ]
     },
     "flow_vertex": {
       "type": "SEQ",
@@ -3320,6 +3350,27 @@
         {
           "type": "SYMBOL",
           "name": "flow_vertex_leanleft"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "flow_vertex_annotation"
+        }
+      ]
+    },
+    "flow_vertex_annotation": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "@{"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "flow_vertex_annotation_body"
+        },
+        {
+          "type": "STRING",
+          "value": "}"
         }
       ]
     },
@@ -3606,35 +3657,34 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "CHOICE",
+              "type": "SEQ",
               "members": [
                 {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "flow_vertex_id"
-                    },
-                    {
-                      "type": "STRING",
-                      "value": "["
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "flow_vertex_text"
-                    },
-                    {
-                      "type": "STRING",
-                      "value": "]"
-                    }
-                  ]
+                  "type": "SYMBOL",
+                  "name": "flow_vertex_text"
                 },
                 {
-                  "type": "SEQ",
+                  "type": "CHOICE",
                   "members": [
                     {
-                      "type": "SYMBOL",
-                      "name": "flow_vertex_text"
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": "["
+                        },
+                        {
+                          "type": "SYMBOL",
+                          "name": "flow_vertex_text"
+                        },
+                        {
+                          "type": "STRING",
+                          "value": "]"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BLANK"
                     }
                   ]
                 }
@@ -7601,6 +7651,10 @@
         }
       }
     },
+    "flow_vertex_annotation_body": {
+      "type": "PATTERN",
+      "value": "[^}]*"
+    },
     "flow_link_arrow": {
       "type": "CHOICE",
       "members": [
@@ -7944,7 +7998,12 @@
       "name": "comment"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "flow_stmt_direction",
+      "flow_vertex_id"
+    ]
+  ],
   "precedences": [],
   "externals": [
     {
