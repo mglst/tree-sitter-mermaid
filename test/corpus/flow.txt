@@ -877,3 +877,48 @@ flowchart TD
       (flow_node
         (flow_vertex
           (flow_vertex_id))))))
+
+==========================
+Icon syntax in node label (fa:fa-*)
+==========================
+
+flowchart LR
+    F[fa:fa-car Car]
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_lr)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_square
+            (flow_text_icon)))))))
+
+==========================
+Unclosed double-quote in node label produces error
+==========================
+
+flowchart LR
+  C[Unclosed] --> D["jkl]
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_lr)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_square
+            (flow_text_literal))))
+      (flow_link_simplelink
+        (flow_link_arrow))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))
+    (ERROR
+      (UNEXPECTED 'j'))))

@@ -1669,6 +1669,10 @@
       "required": true,
       "types": [
         {
+          "type": "flow_text_icon",
+          "named": true
+        },
+        {
           "type": "flow_text_literal",
           "named": true
         },
@@ -1687,6 +1691,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "flow_text_icon",
+          "named": true
+        },
         {
           "type": "flow_text_literal",
           "named": true
@@ -1707,6 +1715,10 @@
       "required": true,
       "types": [
         {
+          "type": "flow_text_icon",
+          "named": true
+        },
+        {
           "type": "flow_text_literal",
           "named": true
         },
@@ -1726,6 +1738,10 @@
       "required": true,
       "types": [
         {
+          "type": "flow_text_icon",
+          "named": true
+        },
+        {
           "type": "flow_text_literal",
           "named": true
         },
@@ -1744,6 +1760,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "flow_text_icon",
+          "named": true
+        },
         {
           "type": "flow_text_literal",
           "named": true
@@ -1769,6 +1789,10 @@
       "required": true,
       "types": [
         {
+          "type": "flow_text_icon",
+          "named": true
+        },
+        {
           "type": "flow_text_literal",
           "named": true
         },
@@ -1787,6 +1811,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "flow_text_icon",
+          "named": true
+        },
         {
           "type": "flow_text_literal",
           "named": true
@@ -1807,6 +1835,10 @@
       "required": true,
       "types": [
         {
+          "type": "flow_text_icon",
+          "named": true
+        },
+        {
           "type": "flow_text_literal",
           "named": true
         },
@@ -1825,6 +1857,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "flow_text_icon",
+          "named": true
+        },
         {
           "type": "flow_text_literal",
           "named": true
@@ -1845,6 +1881,10 @@
       "required": true,
       "types": [
         {
+          "type": "flow_text_icon",
+          "named": true
+        },
+        {
           "type": "flow_text_literal",
           "named": true
         },
@@ -1863,6 +1903,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "flow_text_icon",
+          "named": true
+        },
         {
           "type": "flow_text_literal",
           "named": true
@@ -1883,6 +1927,10 @@
       "required": true,
       "types": [
         {
+          "type": "flow_text_icon",
+          "named": true
+        },
+        {
           "type": "flow_text_literal",
           "named": true
         },
@@ -1902,6 +1950,10 @@
       "required": true,
       "types": [
         {
+          "type": "flow_text_icon",
+          "named": true
+        },
+        {
           "type": "flow_text_literal",
           "named": true
         },
@@ -1920,6 +1972,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "flow_text_icon",
+          "named": true
+        },
         {
           "type": "flow_text_literal",
           "named": true
@@ -1944,6 +2000,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "flow_text_icon",
+          "named": true
+        },
         {
           "type": "flow_text_literal",
           "named": true
@@ -3983,6 +4043,10 @@
   },
   {
     "type": "flow_link_invisible",
+    "named": true
+  },
+  {
+    "type": "flow_text_icon",
     "named": true
   },
   {

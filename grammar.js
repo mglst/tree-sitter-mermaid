@@ -133,8 +133,9 @@ const tokens = {
     flowchart_direction_tb: choice(kwd("tb"), kwd("td"), "v"),
     flowchart_direction_bt: choice(kwd("bt"), "^"),
 
-    flow_text_literal: repeat1(/[^-|}\])\s\n;/\\]+/),
+    flow_text_literal: repeat1(/[^-|}\])\s\n;/\\"]+/),
     flow_text_quoted: (/"[^"]*"/),
+    flow_text_icon: token(prec(1, /[a-zA-Z]+:[a-zA-Z][a-zA-Z0-9]*(-[a-zA-Z][a-zA-Z0-9]*)*([ \t]+[a-zA-Z0-9_~!?]+)*/)),
     _flow_vertex_id_token: token(prec(-1, /[a-zA-Z0-9_~!?]+(-[a-zA-Z0-9_~!?]+)*/)),
 
     // 適当
@@ -786,7 +787,7 @@ module.exports = grammar({
         flow_vertex_inv_trapezoid: $ => seq( "[\\", $._flow_text, "/]" ),
         flow_vertex_leanright: $ => seq("[/", $._flow_text, "/]" ),
         flow_vertex_leanleft: $ => seq( "[\\", $._flow_text, "\\]" ),
-        _flow_text: $ => choice($.flow_text_literal, $.flow_text_quoted),
+        _flow_text: $ => choice($.flow_text_literal, $.flow_text_quoted, $.flow_text_icon),
 
         flow_stmt_subgraph: $ => seq(
             "subgraph",
