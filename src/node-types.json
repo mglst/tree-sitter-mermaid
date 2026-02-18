@@ -1695,6 +1695,11 @@
     "fields": {}
   },
   {
+    "type": "flow_text_literal_slash",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "flow_text_quoted",
     "named": true,
     "fields": {}
@@ -1746,7 +1751,7 @@
           "named": true
         },
         {
-          "type": "flow_text_literal",
+          "type": "flow_text_literal_slash",
           "named": true
         },
         {
@@ -1769,7 +1774,7 @@
           "named": true
         },
         {
-          "type": "flow_text_literal",
+          "type": "flow_text_literal_slash",
           "named": true
         },
         {
@@ -1792,7 +1797,7 @@
           "named": true
         },
         {
-          "type": "flow_text_literal",
+          "type": "flow_text_literal_slash",
           "named": true
         },
         {
@@ -1815,7 +1820,7 @@
           "named": true
         },
         {
-          "type": "flow_text_literal",
+          "type": "flow_text_literal_slash",
           "named": true
         },
         {
@@ -1838,7 +1843,7 @@
           "named": true
         },
         {
-          "type": "flow_text_literal",
+          "type": "flow_text_literal_slash",
           "named": true
         },
         {
@@ -1861,7 +1866,7 @@
           "named": true
         },
         {
-          "type": "flow_text_literal",
+          "type": "flow_text_literal_slash",
           "named": true
         },
         {
@@ -1968,7 +1973,7 @@
           "named": true
         },
         {
-          "type": "flow_text_literal",
+          "type": "flow_text_literal_slash",
           "named": true
         },
         {
@@ -1991,7 +1996,7 @@
           "named": true
         },
         {
-          "type": "flow_text_literal",
+          "type": "flow_text_literal_slash",
           "named": true
         },
         {
@@ -2014,7 +2019,7 @@
           "named": true
         },
         {
-          "type": "flow_text_literal",
+          "type": "flow_text_literal_slash",
           "named": true
         },
         {
@@ -2037,7 +2042,7 @@
           "named": true
         },
         {
-          "type": "flow_text_literal",
+          "type": "flow_text_literal_slash",
           "named": true
         },
         {
@@ -2060,7 +2065,7 @@
           "named": true
         },
         {
-          "type": "flow_text_literal",
+          "type": "flow_text_literal_slash",
           "named": true
         },
         {
@@ -2083,7 +2088,7 @@
           "named": true
         },
         {
-          "type": "flow_text_literal",
+          "type": "flow_text_literal_slash",
           "named": true
         },
         {

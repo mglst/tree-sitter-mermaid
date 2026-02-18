@@ -3580,7 +3580,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_flow_text"
+          "name": "_flow_text_slash"
         },
         {
           "type": "STRING",
@@ -3597,7 +3597,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_flow_text"
+          "name": "_flow_text_slash"
         },
         {
           "type": "STRING",
@@ -3614,7 +3614,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_flow_text"
+          "name": "_flow_text_slash"
         },
         {
           "type": "STRING",
@@ -3631,7 +3631,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_flow_text"
+          "name": "_flow_text_slash"
         },
         {
           "type": "STRING",
@@ -3648,7 +3648,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_flow_text"
+          "name": "_flow_text_slash"
         },
         {
           "type": "STRING",
@@ -3665,7 +3665,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_flow_text"
+          "name": "_flow_text_slash"
         },
         {
           "type": "STRING",
@@ -3682,7 +3682,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_flow_text"
+          "name": "_flow_text_slash"
         },
         {
           "type": "STRING",
@@ -3699,7 +3699,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_flow_text"
+          "name": "_flow_text_slash"
         },
         {
           "type": "STRING",
@@ -3716,7 +3716,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_flow_text"
+          "name": "_flow_text_slash"
         },
         {
           "type": "STRING",
@@ -3733,7 +3733,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_flow_text"
+          "name": "_flow_text_slash"
         },
         {
           "type": "STRING",
@@ -3750,7 +3750,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_flow_text"
+          "name": "_flow_text_slash"
         },
         {
           "type": "STRING",
@@ -3767,7 +3767,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_flow_text"
+          "name": "_flow_text_slash"
         },
         {
           "type": "STRING",
@@ -3849,6 +3849,23 @@
         {
           "type": "SYMBOL",
           "name": "flow_text_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "flow_text_quoted"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "flow_text_icon"
+        }
+      ]
+    },
+    "_flow_text_slash": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "flow_text_literal_slash"
         },
         {
           "type": "SYMBOL",
@@ -7867,6 +7884,22 @@
           {
             "type": "PATTERN",
             "value": "[^|}\\])\\s\\n;/\\\\\"<>]+"
+          },
+          {
+            "type": "PATTERN",
+            "value": "<[^>]*>"
+          }
+        ]
+      }
+    },
+    "flow_text_literal_slash": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "[^|}\\])\\s\\n;\\\\\"<>]+"
           },
           {
             "type": "PATTERN",

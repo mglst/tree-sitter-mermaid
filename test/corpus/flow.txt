@@ -113,55 +113,55 @@ flowchart LR
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_literal)))))
+            (flow_text_literal_slash)))))
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_round
-            (flow_text_literal)))))
+            (flow_text_literal_slash)))))
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_stadium
-            (flow_text_literal)))))
+            (flow_text_literal_slash)))))
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_subroutine
-            (flow_text_literal)))))
+            (flow_text_literal_slash)))))
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_cylinder
-            (flow_text_literal)))))
+            (flow_text_literal_slash)))))
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_circle
-            (flow_text_literal)))))
+            (flow_text_literal_slash)))))
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_odd
-            (flow_text_literal)))))
+            (flow_text_literal_slash)))))
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_diamond
-            (flow_text_literal)))))
+            (flow_text_literal_slash)))))
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_hexagon
-            (flow_text_literal)))))
+            (flow_text_literal_slash)))))
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -417,14 +417,14 @@ flowchart TD
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_literal))))
+            (flow_text_literal_slash))))
       (flow_link_simplelink
         (flow_link_arrow))
       (flow_node
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_diamond
-            (flow_text_literal)))))
+            (flow_text_literal_slash)))))
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -437,7 +437,7 @@ flowchart TD
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_literal)))))
+            (flow_text_literal_slash)))))
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -448,7 +448,7 @@ flowchart TD
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_literal)))))
+            (flow_text_literal_slash)))))
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -470,7 +470,7 @@ flowchart TD
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_literal)))))
+            (flow_text_literal_slash)))))
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -483,7 +483,7 @@ flowchart TD
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_literal)))))
+            (flow_text_literal_slash)))))
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -496,7 +496,7 @@ flowchart TD
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_literal)))))))
+            (flow_text_literal_slash)))))))
 
 ==========================
 Multi-nodes
@@ -761,14 +761,14 @@ graph TD
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_literal))))
+            (flow_text_literal_slash))))
       (flow_link_simplelink
         (flow_link_arrow))
       (flow_node
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_literal)))))))
+            (flow_text_literal_slash)))))))
 
 ==========================
 graph LR alias
@@ -809,14 +809,14 @@ flowchart TD
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_literal))))
+            (flow_text_literal_slash))))
       (flow_link_invisible_link
         (flow_link_invisible))
       (flow_node
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_literal)))))))
+            (flow_text_literal_slash)))))))
 
 ==========================
 Invisible link (longer, affects layout weight)
@@ -918,7 +918,7 @@ flowchart LR
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_literal))))
+            (flow_text_literal_slash))))
       (flow_link_simplelink
         (flow_link_arrow))
       (flow_node
@@ -962,14 +962,14 @@ flowchart TD
           (flow_vertex_id
             (_flow_vertex_id_token))
           (flow_vertex_square
-            (flow_text_literal))))
+            (flow_text_literal_slash))))
       (flow_link_simplelink
         (flow_link_arrow))
       (flow_node
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_literal)))))))
+            (flow_text_literal_slash)))))))
 
 ==========================
 Node annotation @{} syntax
@@ -1008,7 +1008,7 @@ flowchart TD
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_literal))))
+            (flow_text_literal_slash))))
       (flow_link_simplelink
         (flow_link_arrow))
       (flow_node
@@ -1019,7 +1019,7 @@ flowchart TD
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_literal)))))))
+            (flow_text_literal_slash)))))))
 
 ==========================
 Blank line inside subgraph body (BUG-5)
@@ -1085,7 +1085,7 @@ flowchart TD
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_double_circle
-            (flow_text_literal)))))))
+            (flow_text_literal_slash)))))))
 
 ==========================
 Edge-ID annotation prefix on arrow (issue #8)
@@ -1229,14 +1229,14 @@ flowchart LR
             (flow_vertex
               (flow_vertex_id)
               (flow_vertex_square
-                (flow_text_literal))))
+                (flow_text_literal_slash))))
           (flow_link_simplelink
             (flow_link_arrow))
           (flow_node
             (flow_vertex
               (flow_vertex_id)
               (flow_vertex_square
-                (flow_text_literal)))))))
+                (flow_text_literal_slash)))))))
     (flow_stmt_subgraph
       (flow_vertex_text)
       (flow_stmt_subgraph_inner
@@ -1247,14 +1247,14 @@ flowchart LR
             (flow_vertex
               (flow_vertex_id)
               (flow_vertex_square
-                (flow_text_literal))))
+                (flow_text_literal_slash))))
           (flow_link_simplelink
             (flow_link_arrow))
           (flow_node
             (flow_vertex
               (flow_vertex_id)
               (flow_vertex_square
-                (flow_text_literal)))))))
+                (flow_text_literal_slash)))))))
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -1336,3 +1336,62 @@ flowchart TD
       (flow_node
         (flow_vertex
           (flow_vertex_id))))))
+
+==========================
+Slash in unquoted square-bracket label (issue #12)
+==========================
+
+flowchart TD
+    A[label/with/slashes]
+    OthersNotified[Admin / Other Owners: Update initiative ownership]
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_square
+            (flow_text_literal_slash)))))
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_square
+            (flow_text_literal_slash)))))))
+
+==========================
+Slash shapes unaffected by issue #12 fix
+==========================
+
+flowchart TD
+    id1[/lean right/]
+    A[/Christmas\]
+    B[\Go shopping/]
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_leanright
+            (flow_text_literal)))))
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_trapezoid
+            (flow_text_literal)))))
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_inv_trapezoid
+            (flow_text_literal)))))))

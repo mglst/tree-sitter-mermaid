@@ -292,6 +292,7 @@
 
 ; Flow diagram text
 (flow_text_literal) @string
+(flow_text_literal_slash) @string
 (flow_text_quoted) @string
 (flow_vertex_text) @string
 (flow_arrow_text) @string
