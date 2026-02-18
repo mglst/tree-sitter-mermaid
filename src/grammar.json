@@ -3366,8 +3366,13 @@
           "name": "flow_link_arrow_start"
         },
         {
-          "type": "SYMBOL",
-          "name": "flow_arrow_text"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_flow_arrow_text_mid"
+          },
+          "named": true,
+          "value": "flow_arrow_text"
         },
         {
           "type": "SYMBOL",
@@ -3376,6 +3381,19 @@
       ]
     },
     "flow_arrow_text": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "flow_text_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "flow_text_quoted"
+        }
+      ]
+    },
+    "_flow_arrow_text_mid": {
       "type": "REPEAT1",
       "content": {
         "type": "CHOICE",

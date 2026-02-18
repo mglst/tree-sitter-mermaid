@@ -1490,6 +1490,10 @@
       "required": false,
       "types": [
         {
+          "type": "flow_text_literal",
+          "named": true
+        },
+        {
           "type": "flow_text_quoted",
           "named": true
         }

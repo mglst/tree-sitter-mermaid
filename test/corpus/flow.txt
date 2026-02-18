@@ -245,7 +245,8 @@ flowchart LR
           (flow_vertex_id)))
       (flow_link_arrowtext
         (flow_link_arrow)
-        (flow_arrow_text))
+        (flow_arrow_text
+          (flow_text_literal)))
       (flow_node
         (flow_vertex
           (flow_vertex_id))))
@@ -255,7 +256,8 @@ flowchart LR
           (flow_vertex_id)))
       (flow_link_arrowtext
         (flow_link_arrow)
-        (flow_arrow_text))
+        (flow_arrow_text
+          (flow_text_literal)))
       (flow_node
         (flow_vertex
           (flow_vertex_id))))
@@ -429,7 +431,8 @@ flowchart TD
           (flow_vertex_id)))
       (flow_link_arrowtext
         (flow_link_arrow)
-        (flow_arrow_text))
+        (flow_arrow_text
+          (flow_text_literal)))
       (flow_node
         (flow_vertex
           (flow_vertex_id)
@@ -461,7 +464,8 @@ flowchart TD
           (flow_vertex_id)))
       (flow_link_arrowtext
         (flow_link_arrow)
-        (flow_arrow_text))
+        (flow_arrow_text
+          (flow_text_literal)))
       (flow_node
         (flow_vertex
           (flow_vertex_id)
@@ -1257,6 +1261,78 @@ flowchart LR
           (flow_vertex_id)))
       (flow_link_simplelink
         (flow_link_arrow))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))))
+
+==========================
+Dash in pipe-delimited edge label (BUG-6a)
+==========================
+
+flowchart TD
+    A -->|No - Citizen| B
+    C -->|Yes - Admin| D
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)))
+      (flow_link_arrowtext
+        (flow_link_arrow)
+        (flow_arrow_text
+          (flow_text_literal)))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)))
+      (flow_link_arrowtext
+        (flow_link_arrow)
+        (flow_arrow_text
+          (flow_text_literal)))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))))
+
+==========================
+Colon in pipe-delimited edge label (BUG-6b)
+==========================
+
+flowchart TD
+    A -->|Step 1: Init| B
+    C -->|Step 2: Done| D
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)))
+      (flow_link_arrowtext
+        (flow_link_arrow)
+        (flow_arrow_text
+          (flow_text_literal)))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)))
+      (flow_link_arrowtext
+        (flow_link_arrow)
+        (flow_arrow_text
+          (flow_text_literal)))
       (flow_node
         (flow_vertex
           (flow_vertex_id))))))

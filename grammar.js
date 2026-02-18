@@ -771,10 +771,16 @@ module.exports = grammar({
         flow_link_arrowtext: $ => seq($.flow_link_arrow, "|", $.flow_arrow_text, "|"),
         flow_link_middletext: $ => seq(
             $.flow_link_arrow_start,
-            $.flow_arrow_text,
+            alias($._flow_arrow_text_mid, $.flow_arrow_text),
             $.flow_link_arrow,
         ),
-        flow_arrow_text: $ => repeat1(choice($._alpha_num_token, $.flow_text_quoted)),
+        // Pipe-delimited label (-->|text|): allow full flow_text_literal so dashes, colons,
+        // slashes, etc. work without quoting (the | delimiter resolves ambiguity).
+        flow_arrow_text: $ => choice($.flow_text_literal, $.flow_text_quoted),
+        // Middle-text label (-- text -->): must not allow consecutive dashes which would be
+        // greedily consumed over the closing arrow token; keep the original alpha-num-token
+        // behaviour so the arrow is always unambiguously tokenised.
+        _flow_arrow_text_mid: $ => repeat1(choice($._alpha_num_token, $.flow_text_quoted)),
 
         flow_vertex_id: $ => choice(
             $._flow_vertex_id_token,
