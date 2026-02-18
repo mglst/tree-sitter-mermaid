@@ -133,7 +133,7 @@ const tokens = {
     flowchart_direction_tb: choice(kwd("tb"), kwd("td"), "v"),
     flowchart_direction_bt: choice(kwd("bt"), "^"),
 
-    flow_text_literal: repeat1(/[^|}\])\s\n;/\\"]+/),
+    flow_text_literal: repeat1(choice(/[^|}\])\s\n;/\\"<>]+/, /<[^>]*>/)),
     flow_text_quoted: (/"[^"]*"/),
     flow_text_icon: token(prec(1, /[a-zA-Z]+:[a-zA-Z][a-zA-Z0-9]*(-[a-zA-Z][a-zA-Z0-9]*)*([ \t]+[a-zA-Z0-9_~!?]+)*/)),
     _flow_vertex_id_token: token(prec(-1, /[a-zA-Z0-9_~!?]+(-[a-zA-Z0-9_~!?]+)*/)),
@@ -144,11 +144,19 @@ const tokens = {
         /[xo<]?--+[-xo>]/,
         /[xo<]?==+[=xo>]/,
         /[xo<]?-?\.+-[xo>]/,
+        // Mermaid v11 edge-ID annotation prefix (e.g. `e1@-->`)
+        /[a-zA-Z0-9_~!?]+@[xo<]?--+[-xo>]/,
+        /[a-zA-Z0-9_~!?]+@[xo<]?==+[=xo>]/,
+        /[a-zA-Z0-9_~!?]+@[xo<]?-?\.+-[xo>]/,
     ),
     flow_link_arrow_start: choice(
         /[xo<]?--+/,
         /[xo<]?==+/,
         /[xo<]?-\.+/,
+        // Mermaid v11 edge-ID annotation prefix
+        /[a-zA-Z0-9_~!?]+@[xo<]?--+/,
+        /[a-zA-Z0-9_~!?]+@[xo<]?==+/,
+        /[a-zA-Z0-9_~!?]+@[xo<]?-\.+/,
     ),
     flow_link_invisible: token(prec(1, /~~~[~]*/)),
 
@@ -714,7 +722,9 @@ module.exports = grammar({
                 $._newline,
             ),
             optional($._newline),
-            sep($._flow_stmt, choice($._newline, ";")),
+            // Allow multiple newlines as separator (blank lines between statements,
+            // e.g. after a comment whose \n is consumed by the comment token — #6)
+            sep($._flow_stmt, seq(choice($._newline, ";"), repeat($._newline))),
             optional(choice(seq(";", optional($._newline)), $._newline)),
         ),
         _flowchart_direction: $ => choice(
@@ -726,15 +736,24 @@ module.exports = grammar({
 
         _flow_stmt: $ => choice(
             $.flow_stmt_vertice,
-            // $.flow_stmt_style,
+            $.flow_stmt_style,
             // $.flow_stmt_linkstyle,
-            // $.flow_stmt_classdef,
-            // $.flow_stmt_class,
+            $.flow_stmt_classdef,
+            $.flow_stmt_class,
+            $.flow_stmt_click,
             $.flow_stmt_subgraph,
             prec(1, $.flow_stmt_direction),
         ),
 
         flow_stmt_direction: $ => seq(kwd("direction"), $._flowchart_direction),
+
+        // Style / class directives (issue #7) — permissive: consume the rest of the line
+        flow_stmt_style: $ => seq(kwd("style"), /[^\n]*/),
+        flow_stmt_classdef: $ => seq(kwd("classDef"), /[^\n]*/),
+        flow_stmt_class: $ => seq(kwd("class"), /[^\n]*/),
+
+        // Click event handlers (issue #9) — permissive stub
+        flow_stmt_click: $ => seq(kwd("click"), /[^\n]*/),
 
         flow_stmt_vertice: $ => sep($.flow_node, $._flow_link),
 
@@ -755,7 +774,7 @@ module.exports = grammar({
             $.flow_arrow_text,
             $.flow_link_arrow,
         ),
-        flow_arrow_text: $ => repeat1($._alpha_num_token),
+        flow_arrow_text: $ => repeat1(choice($._alpha_num_token, $.flow_text_quoted)),
 
         flow_vertex_id: $ => choice(
             $._flow_vertex_id_token,
@@ -765,8 +784,11 @@ module.exports = grammar({
         flow_vertex: $ => seq(
             $.flow_vertex_id,
             optional($._flow_vertex_kind),
+            // Class application suffix: A:::className (issue #7)
+            optional(seq(":::", $._flow_vertex_id_token)),
         ),
         _flow_vertex_kind: $ => choice(
+            $.flow_vertex_double_circle,  // must come before flow_vertex_circle (((vs(() — issue #9
             $.flow_vertex_square,
             $.flow_vertex_circle,
             $.flow_vertex_ellipse,
@@ -786,6 +808,7 @@ module.exports = grammar({
         ),
         flow_vertex_annotation: $ => seq("@{", $.flow_vertex_annotation_body, "}"),
         flow_vertex_square: $ => seq( "[", $._flow_text, "]" ),
+        flow_vertex_double_circle: $ => seq("(((", $._flow_text, ")))"),  // issue #9: triple-paren
         flow_vertex_circle: $ => seq("((", $._flow_text, "))"),
         flow_vertex_ellipse: $ => seq( "(-", $._flow_text, "-)" ),
         flow_vertex_stadium: $ => seq("([", $._flow_text, "])"),
@@ -806,8 +829,9 @@ module.exports = grammar({
             "subgraph",
             optional(
                 seq(
-                    $.flow_vertex_text,
-                    optional(seq("[", $.flow_vertex_text, "]")),
+                    // Accept quoted names in addition to plain identifiers (issue #9)
+                    choice($.flow_vertex_text, $.flow_text_quoted),
+                    optional(seq("[", choice($.flow_vertex_text, $.flow_text_quoted), "]")),
                 ),
             ),
             choice(";", $._newline),

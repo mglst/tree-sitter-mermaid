@@ -174,7 +174,23 @@
     "named": true,
     "subtypes": [
       {
+        "type": "flow_stmt_class",
+        "named": true
+      },
+      {
+        "type": "flow_stmt_classdef",
+        "named": true
+      },
+      {
+        "type": "flow_stmt_click",
+        "named": true
+      },
+      {
         "type": "flow_stmt_direction",
+        "named": true
+      },
+      {
+        "type": "flow_stmt_style",
         "named": true
       },
       {
@@ -205,6 +221,10 @@
       },
       {
         "type": "flow_vertex_diamond",
+        "named": true
+      },
+      {
+        "type": "flow_vertex_double_circle",
         "named": true
       },
       {
@@ -1464,7 +1484,17 @@
   {
     "type": "flow_arrow_text",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "flow_text_quoted",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "flow_link_arrow",
@@ -1564,6 +1594,21 @@
     }
   },
   {
+    "type": "flow_stmt_class",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "flow_stmt_classdef",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "flow_stmt_click",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "flow_stmt_direction",
     "named": true,
     "fields": {},
@@ -1579,6 +1624,11 @@
     }
   },
   {
+    "type": "flow_stmt_style",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "flow_stmt_subgraph",
     "named": true,
     "fields": {},
@@ -1588,6 +1638,10 @@
       "types": [
         {
           "type": "flow_stmt_subgraph_inner",
+          "named": true
+        },
+        {
+          "type": "flow_text_quoted",
           "named": true
         },
         {
@@ -1723,6 +1777,29 @@
   },
   {
     "type": "flow_vertex_diamond",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "flow_text_icon",
+          "named": true
+        },
+        {
+          "type": "flow_text_literal",
+          "named": true
+        },
+        {
+          "type": "flow_text_quoted",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "flow_vertex_double_circle",
     "named": true,
     "fields": {},
     "children": {
@@ -3682,6 +3759,10 @@
     "named": false
   },
   {
+    "type": "(((",
+    "named": false
+  },
+  {
     "type": "(-",
     "named": false
   },
@@ -3695,6 +3776,10 @@
   },
   {
     "type": "))",
+    "named": false
+  },
+  {
+    "type": ")))",
     "named": false
   },
   {
@@ -3950,6 +4035,10 @@
     "named": false
   },
   {
+    "type": "classDef",
+    "named": false
+  },
+  {
     "type": "classDiagram",
     "named": false
   },
@@ -3988,6 +4077,10 @@
   {
     "type": "class_visibility_public",
     "named": true
+  },
+  {
+    "type": "click",
+    "named": false
   },
   {
     "type": "columns",
@@ -4341,6 +4434,10 @@
   {
     "type": "state_id",
     "named": true
+  },
+  {
+    "type": "style",
+    "named": false
   },
   {
     "type": "subgraph",

@@ -2992,15 +2992,27 @@
                 "type": "SEQ",
                 "members": [
                   {
-                    "type": "CHOICE",
+                    "type": "SEQ",
                     "members": [
                       {
-                        "type": "SYMBOL",
-                        "name": "_newline"
+                        "type": "CHOICE",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "_newline"
+                          },
+                          {
+                            "type": "STRING",
+                            "value": ";"
+                          }
+                        ]
                       },
                       {
-                        "type": "STRING",
-                        "value": ";"
+                        "type": "REPEAT",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "_newline"
+                        }
                       }
                     ]
                   },
@@ -3083,6 +3095,22 @@
         },
         {
           "type": "SYMBOL",
+          "name": "flow_stmt_style"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "flow_stmt_classdef"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "flow_stmt_class"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "flow_stmt_click"
+        },
+        {
+          "type": "SYMBOL",
           "name": "flow_stmt_subgraph"
         },
         {
@@ -3117,6 +3145,106 @@
         {
           "type": "SYMBOL",
           "name": "_flowchart_direction"
+        }
+      ]
+    },
+    "flow_stmt_style": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[sS][tT][yY][lL][eE]"
+              }
+            }
+          },
+          "named": false,
+          "value": "style"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\n]*"
+        }
+      ]
+    },
+    "flow_stmt_classdef": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[cC][lL][aA][sS][sS][DD][eE][fF]"
+              }
+            }
+          },
+          "named": false,
+          "value": "classDef"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\n]*"
+        }
+      ]
+    },
+    "flow_stmt_class": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[cC][lL][aA][sS][sS]"
+              }
+            }
+          },
+          "named": false,
+          "value": "class"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\n]*"
+        }
+      ]
+    },
+    "flow_stmt_click": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[cC][lL][iI][cC][kK]"
+              }
+            }
+          },
+          "named": false,
+          "value": "click"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\n]*"
         }
       ]
     },
@@ -3250,8 +3378,17 @@
     "flow_arrow_text": {
       "type": "REPEAT1",
       "content": {
-        "type": "SYMBOL",
-        "name": "_alpha_num_token"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_alpha_num_token"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "flow_text_quoted"
+          }
+        ]
       }
     },
     "flow_vertex_id": {
@@ -3302,12 +3439,37 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ":::"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_flow_vertex_id_token"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
     "_flow_vertex_kind": {
       "type": "CHOICE",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "flow_vertex_double_circle"
+        },
         {
           "type": "SYMBOL",
           "name": "flow_vertex_square"
@@ -3405,6 +3567,23 @@
         {
           "type": "STRING",
           "value": "]"
+        }
+      ]
+    },
+    "flow_vertex_double_circle": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "((("
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_flow_text"
+        },
+        {
+          "type": "STRING",
+          "value": ")))"
         }
       ]
     },
@@ -3677,8 +3856,17 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "flow_vertex_text"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "flow_vertex_text"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "flow_text_quoted"
+                    }
+                  ]
                 },
                 {
                   "type": "CHOICE",
@@ -3691,8 +3879,17 @@
                           "value": "["
                         },
                         {
-                          "type": "SYMBOL",
-                          "name": "flow_vertex_text"
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "SYMBOL",
+                              "name": "flow_vertex_text"
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "flow_text_quoted"
+                            }
+                          ]
                         },
                         {
                           "type": "STRING",
@@ -7647,8 +7844,17 @@
     "flow_text_literal": {
       "type": "REPEAT1",
       "content": {
-        "type": "PATTERN",
-        "value": "[^|}\\])\\s\\n;/\\\\\"]+"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "[^|}\\])\\s\\n;/\\\\\"<>]+"
+          },
+          {
+            "type": "PATTERN",
+            "value": "<[^>]*>"
+          }
+        ]
       }
     },
     "flow_text_quoted": {
@@ -7695,6 +7901,18 @@
         {
           "type": "PATTERN",
           "value": "[xo<]?-?\\.+-[xo>]"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[a-zA-Z0-9_~!?]+@[xo<]?--+[-xo>]"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[a-zA-Z0-9_~!?]+@[xo<]?==+[=xo>]"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[a-zA-Z0-9_~!?]+@[xo<]?-?\\.+-[xo>]"
         }
       ]
     },
@@ -7712,6 +7930,18 @@
         {
           "type": "PATTERN",
           "value": "[xo<]?-\\.+"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[a-zA-Z0-9_~!?]+@[xo<]?--+"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[a-zA-Z0-9_~!?]+@[xo<]?==+"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[a-zA-Z0-9_~!?]+@[xo<]?-\\.+"
         }
       ]
     },

@@ -1063,3 +1063,200 @@ flowchart TD
         (flow_vertex
           (flow_vertex_id))))
     (ERROR)))
+
+==========================
+Triple-paren double-circle shape (issue #9)
+==========================
+
+flowchart TD
+    id1(((This is the text in the circle)))
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_double_circle
+            (flow_text_literal)))))))
+
+==========================
+Edge-ID annotation prefix on arrow (issue #8)
+==========================
+
+flowchart LR
+  A e1@--> B
+  A e2@==> C
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_lr)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)))
+      (flow_link_simplelink
+        (flow_link_arrow))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)))
+      (flow_link_simplelink
+        (flow_link_arrow))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))))
+
+==========================
+style / classDef / class directives and :::class application (issue #7)
+==========================
+
+flowchart LR
+    A:::foo --> B
+    classDef foo fill:#f96
+    style A stroke:#333
+    class B foo
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_lr)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)))
+      (flow_link_simplelink
+        (flow_link_arrow))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))
+    (flow_stmt_classdef)
+    (flow_stmt_style)
+    (flow_stmt_class)))
+
+==========================
+click event handler (issue #9)
+==========================
+
+flowchart LR
+    A-->B
+    click A "https://example.com" "Tooltip"
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_lr)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)))
+      (flow_link_simplelink
+        (flow_link_arrow))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))
+    (flow_stmt_click)))
+
+==========================
+Quoted subgraph name (issue #9)
+==========================
+
+flowchart LR
+subgraph "My Subgraph"
+  A --> B
+end
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_lr)
+    (flow_stmt_subgraph
+      (flow_text_quoted)
+      (flow_stmt_subgraph_inner
+        (flow_stmt_vertice
+          (flow_node
+            (flow_vertex
+              (flow_vertex_id)))
+          (flow_link_simplelink
+            (flow_link_arrow))
+          (flow_node
+            (flow_vertex
+              (flow_vertex_id))))))))
+
+==========================
+Nested subgraphs with direction and blank lines (issue #6)
+==========================
+
+flowchart LR
+    subgraph subgraph1
+        direction TB
+        top1[top] --> bottom1[bottom]
+    end
+    subgraph subgraph2
+        direction TB
+        top2[top] --> bottom2[bottom]
+    end
+
+    outside --> subgraph1
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_lr)
+    (flow_stmt_subgraph
+      (flow_vertex_text)
+      (flow_stmt_subgraph_inner
+        (flow_stmt_direction
+          (flowchart_direction_tb))
+        (flow_stmt_vertice
+          (flow_node
+            (flow_vertex
+              (flow_vertex_id)
+              (flow_vertex_square
+                (flow_text_literal))))
+          (flow_link_simplelink
+            (flow_link_arrow))
+          (flow_node
+            (flow_vertex
+              (flow_vertex_id)
+              (flow_vertex_square
+                (flow_text_literal)))))))
+    (flow_stmt_subgraph
+      (flow_vertex_text)
+      (flow_stmt_subgraph_inner
+        (flow_stmt_direction
+          (flowchart_direction_tb))
+        (flow_stmt_vertice
+          (flow_node
+            (flow_vertex
+              (flow_vertex_id)
+              (flow_vertex_square
+                (flow_text_literal))))
+          (flow_link_simplelink
+            (flow_link_arrow))
+          (flow_node
+            (flow_vertex
+              (flow_vertex_id)
+              (flow_vertex_square
+                (flow_text_literal)))))))
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)))
+      (flow_link_simplelink
+        (flow_link_arrow))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))))
