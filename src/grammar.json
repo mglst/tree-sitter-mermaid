@@ -3729,24 +3729,33 @@
     "flow_stmt_subgraph_inner": {
       "type": "REPEAT1",
       "content": {
-        "type": "SEQ",
+        "type": "CHOICE",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "_flow_stmt"
-          },
-          {
-            "type": "CHOICE",
+            "type": "SEQ",
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "_newline"
+                "name": "_flow_stmt"
               },
               {
-                "type": "STRING",
-                "value": ";"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_newline"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": ";"
+                  }
+                ]
               }
             ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_newline"
           }
         ]
       }
@@ -7622,7 +7631,7 @@
       "type": "REPEAT1",
       "content": {
         "type": "PATTERN",
-        "value": "[^-|}\\])\\s\\n;/\\\\\"]+"
+        "value": "[^|}\\])\\s\\n;/\\\\\"]+"
       }
     },
     "flow_text_quoted": {
@@ -7653,7 +7662,7 @@
     },
     "flow_vertex_annotation_body": {
       "type": "PATTERN",
-      "value": "[^}]*"
+      "value": "[^}]+"
     },
     "flow_link_arrow": {
       "type": "CHOICE",

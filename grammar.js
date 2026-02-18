@@ -133,11 +133,11 @@ const tokens = {
     flowchart_direction_tb: choice(kwd("tb"), kwd("td"), "v"),
     flowchart_direction_bt: choice(kwd("bt"), "^"),
 
-    flow_text_literal: repeat1(/[^-|}\])\s\n;/\\"]+/),
+    flow_text_literal: repeat1(/[^|}\])\s\n;/\\"]+/),
     flow_text_quoted: (/"[^"]*"/),
     flow_text_icon: token(prec(1, /[a-zA-Z]+:[a-zA-Z][a-zA-Z0-9]*(-[a-zA-Z][a-zA-Z0-9]*)*([ \t]+[a-zA-Z0-9_~!?]+)*/)),
     _flow_vertex_id_token: token(prec(-1, /[a-zA-Z0-9_~!?]+(-[a-zA-Z0-9_~!?]+)*/)),
-    flow_vertex_annotation_body: /[^}]*/,
+    flow_vertex_annotation_body: /[^}]+/,
 
     // 適当
     flow_link_arrow: choice(
@@ -814,7 +814,7 @@ module.exports = grammar({
             optional($.flow_stmt_subgraph_inner),
             "end",
         ),
-        flow_stmt_subgraph_inner: $ => repeat1(seq($._flow_stmt, choice($._newline, ";"))),
+        flow_stmt_subgraph_inner: $ => repeat1(choice(seq($._flow_stmt, choice($._newline, ";")), $._newline)),
         flow_vertex_text: $ => repeat1($._alpha_num_token),
 
         /// ER diagram
