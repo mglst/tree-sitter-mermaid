@@ -715,7 +715,7 @@ module.exports = grammar({
             ),
             optional($._newline),
             sep($._flow_stmt, choice($._newline, ";")),
-            optional(choice($._newline, ";")),
+            optional(choice(seq(";", optional($._newline)), $._newline)),
         ),
         _flowchart_direction: $ => choice(
             $.flowchart_direction_lr,

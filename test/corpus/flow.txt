@@ -985,3 +985,81 @@ flowchart TD
           (flow_vertex_id)
           (flow_vertex_annotation
             (flow_vertex_annotation_body)))))))
+
+==========================
+Hyphenated text in node label (BUG-4)
+==========================
+
+flowchart TD
+    A[foo-bar] --> B
+    C[multi-word-label]
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_square
+            (flow_text_literal))))
+      (flow_link_simplelink
+        (flow_link_arrow))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_square
+            (flow_text_literal)))))))
+
+==========================
+Blank line inside subgraph body (BUG-5)
+==========================
+
+flowchart TD
+    subgraph SubG
+
+        A --> B
+
+    end
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)
+    (flow_stmt_subgraph
+      (flow_vertex_text)
+      (flow_stmt_subgraph_inner
+        (flow_stmt_vertice
+          (flow_node
+            (flow_vertex
+              (flow_vertex_id)))
+          (flow_link_simplelink
+            (flow_link_arrow))
+          (flow_node
+            (flow_vertex
+              (flow_vertex_id))))))))
+
+==========================
+Empty @{} body produces a parse error
+==========================
+
+flowchart TD
+    A@{}
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))
+    (ERROR)))
