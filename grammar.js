@@ -748,10 +748,19 @@ module.exports = grammar({
 
         flow_stmt_direction: $ => seq(kwd("direction"), $._flowchart_direction),
 
-        // Style / class directives (issue #7) — permissive: consume the rest of the line
-        flow_stmt_style: $ => seq(kwd("style"), /[^\n]*/),
-        flow_stmt_classdef: $ => seq(kwd("classDef"), /[^\n]*/),
-        flow_stmt_class: $ => seq(kwd("class"), /[^\n]*/),
+        // Style / class directives (issue #7) — structured: expose node ID and class name
+        // as named CST children; CSS/property body remains an opaque rest-of-line token.
+        flow_stmt_style: $ => seq(kwd("style"), $.flow_vertex_id, /[^\n]*/),
+        flow_stmt_classdef: $ => seq(kwd("classDef"), $.classdef_name, /[^\n]*/),
+        // `class A,B,C myStyle` — comma-separated node IDs then a class name.
+        // Commas must be written without surrounding spaces (Mermaid's parser requirement).
+        flow_stmt_class: $ => seq(kwd("class"), sep($.flow_vertex_id, ","), $.classdef_name),
+
+        // Shared name token for classDef definitions and class assignments.
+        classdef_name: $ => $._flow_vertex_id_token,
+
+        // Inline class application suffix reference: `A:::className`
+        flow_class_ref: $ => $._flow_vertex_id_token,
 
         // Click event handlers (issue #9) — permissive stub
         flow_stmt_click: $ => seq(kwd("click"), /[^\n]*/),
@@ -792,7 +801,7 @@ module.exports = grammar({
             $.flow_vertex_id,
             optional($._flow_vertex_kind),
             // Class application suffix: A:::className (issue #7)
-            optional(seq(":::", $._flow_vertex_id_token)),
+            optional(seq(":::", $.flow_class_ref)),
         ),
         _flow_vertex_kind: $ => choice(
             $.flow_vertex_double_circle,  // must come before flow_vertex_circle (((vs(() — issue #9

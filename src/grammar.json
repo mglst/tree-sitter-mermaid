@@ -3168,6 +3168,10 @@
           "value": "style"
         },
         {
+          "type": "SYMBOL",
+          "name": "flow_vertex_id"
+        },
+        {
           "type": "PATTERN",
           "value": "[^\\n]*"
         }
@@ -3191,6 +3195,10 @@
           },
           "named": false,
           "value": "classDef"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "classdef_name"
         },
         {
           "type": "PATTERN",
@@ -3218,10 +3226,43 @@
           "value": "class"
         },
         {
-          "type": "PATTERN",
-          "value": "[^\\n]*"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "flow_vertex_id"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "flow_vertex_id"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "classdef_name"
         }
       ]
+    },
+    "classdef_name": {
+      "type": "SYMBOL",
+      "name": "_flow_vertex_id_token"
+    },
+    "flow_class_ref": {
+      "type": "SYMBOL",
+      "name": "_flow_vertex_id_token"
     },
     "flow_stmt_click": {
       "type": "SEQ",
@@ -3470,7 +3511,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "_flow_vertex_id_token"
+                  "name": "flow_class_ref"
                 }
               ]
             },

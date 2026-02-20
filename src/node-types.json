@@ -815,6 +815,11 @@
     }
   },
   {
+    "type": "classdef_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "diagram_architecture",
     "named": true,
     "fields": {},
@@ -1501,6 +1506,11 @@
     }
   },
   {
+    "type": "flow_class_ref",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "flow_link_arrow",
     "named": true,
     "fields": {}
@@ -1600,12 +1610,36 @@
   {
     "type": "flow_stmt_class",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "classdef_name",
+          "named": true
+        },
+        {
+          "type": "flow_vertex_id",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "flow_stmt_classdef",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "classdef_name",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "flow_stmt_click",
@@ -1630,7 +1664,17 @@
   {
     "type": "flow_stmt_style",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "flow_vertex_id",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "flow_stmt_subgraph",
@@ -1714,6 +1758,10 @@
       "types": [
         {
           "type": "_flow_vertex_kind",
+          "named": true
+        },
+        {
+          "type": "flow_class_ref",
           "named": true
         },
         {

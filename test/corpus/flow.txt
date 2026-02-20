@@ -1137,15 +1137,20 @@ flowchart LR
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
-          (flow_vertex_id)))
+          (flow_vertex_id)
+          (flow_class_ref)))
       (flow_link_simplelink
         (flow_link_arrow))
       (flow_node
         (flow_vertex
           (flow_vertex_id))))
-    (flow_stmt_classdef)
-    (flow_stmt_style)
-    (flow_stmt_class)))
+    (flow_stmt_classdef
+      (classdef_name))
+    (flow_stmt_style
+      (flow_vertex_id))
+    (flow_stmt_class
+      (flow_vertex_id)
+      (classdef_name))))
 
 ==========================
 click event handler (issue #9)
