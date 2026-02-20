@@ -972,8 +972,8 @@ flowchart TD
             (flow_text_literal_slash)))))))
 
 ==========================
-Node annotation @{} syntax
-==========================
+Node annotation @{} - single pair bare value
+=============================================
 
 flowchart TD
     A@{ shape: circle }
@@ -988,7 +988,77 @@ flowchart TD
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_annotation
-            (flow_vertex_annotation_body)))))))
+            (flow_annotation_pair
+              (flow_annotation_key)
+              (flow_annotation_value_bare))))))))
+
+==========================
+Node annotation @{} - quoted value
+===================================
+
+flowchart TD
+    A@{ label: "My Node" }
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_annotation
+            (flow_annotation_pair
+              (flow_annotation_key)
+              (flow_annotation_value_quoted))))))))
+
+==========================
+Node annotation @{} - multi-pair with comma
+============================================
+
+flowchart TD
+    A@{ shape: circle, label: "X" }
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_annotation
+            (flow_annotation_pair
+              (flow_annotation_key)
+              (flow_annotation_value_bare))
+            (flow_annotation_pair
+              (flow_annotation_key)
+              (flow_annotation_value_quoted))))))))
+
+==========================
+Node annotation @{} - multi-line
+==================================
+
+flowchart TD
+    A@{
+      shape: circle
+    }
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_annotation
+            (flow_annotation_pair
+              (flow_annotation_key)
+              (flow_annotation_value_bare))))))))
 
 ==========================
 Hyphenated text in node label (BUG-4)
@@ -1065,7 +1135,8 @@ flowchart TD
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
-          (flow_vertex_id))))
+          (flow_vertex_id)))))
+  (ERROR
     (ERROR)))
 
 ==========================

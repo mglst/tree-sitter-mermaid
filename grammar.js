@@ -138,7 +138,6 @@ const tokens = {
     flow_text_quoted: (/"[^"]*"/),
     flow_text_icon: token(prec(1, /[a-zA-Z]+:[a-zA-Z][a-zA-Z0-9]*(-[a-zA-Z][a-zA-Z0-9]*)*([ \t]+[a-zA-Z0-9_~!?]+)*/)),
     _flow_vertex_id_token: token(prec(-1, /[a-zA-Z0-9_~!?]+(-[a-zA-Z0-9_~!?]+)*/)),
-    flow_vertex_annotation_body: /[^}]+/,
 
     // 適当
     flow_link_arrow: choice(
@@ -822,7 +821,27 @@ module.exports = grammar({
             $.flow_vertex_leanleft,
             $.flow_vertex_annotation,
         ),
-        flow_vertex_annotation: $ => seq("@{", $.flow_vertex_annotation_body, "}"),
+        flow_vertex_annotation: $ => seq(
+            "@{",
+            optional($._newline),
+            $.flow_annotation_pair,
+            repeat(seq(
+                optional(","),
+                optional($._newline),
+                $.flow_annotation_pair,
+            )),
+            optional(","),
+            optional($._newline),
+            "}",
+        ),
+        flow_annotation_pair: $ => seq(
+            $.flow_annotation_key,
+            ":",
+            choice($.flow_annotation_value_quoted, $.flow_annotation_value_bare),
+        ),
+        flow_annotation_key: $ => /[a-zA-Z][a-zA-Z0-9-]*/,
+        flow_annotation_value_quoted: $ => /"([^"\\]|\\.)*"/,
+        flow_annotation_value_bare: $ => /[a-zA-Z0-9_~!?.-]+/,
         flow_vertex_square: $ => seq( "[", $._flow_text_slash, "]" ),
         flow_vertex_double_circle: $ => seq("(((", $._flow_text_slash, ")))"),  // issue #9: triple-paren
         flow_vertex_circle: $ => seq("((", $._flow_text_slash, "))"),

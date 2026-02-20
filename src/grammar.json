@@ -3603,14 +3603,124 @@
           "value": "@{"
         },
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_newline"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "SYMBOL",
-          "name": "flow_vertex_annotation_body"
+          "name": "flow_annotation_pair"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_newline"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "flow_annotation_pair"
+              }
+            ]
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_newline"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",
           "value": "}"
         }
       ]
+    },
+    "flow_annotation_pair": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "flow_annotation_key"
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "flow_annotation_value_quoted"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "flow_annotation_value_bare"
+            }
+          ]
+        }
+      ]
+    },
+    "flow_annotation_key": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z][a-zA-Z0-9-]*"
+    },
+    "flow_annotation_value_quoted": {
+      "type": "PATTERN",
+      "value": "\"([^\"\\\\]|\\\\.)*\""
+    },
+    "flow_annotation_value_bare": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9_~!?.-]+"
     },
     "flow_vertex_square": {
       "type": "SEQ",
@@ -7974,10 +8084,6 @@
           "value": "[a-zA-Z0-9_~!?]+(-[a-zA-Z0-9_~!?]+)*"
         }
       }
-    },
-    "flow_vertex_annotation_body": {
-      "type": "PATTERN",
-      "value": "[^}]+"
     },
     "flow_link_arrow": {
       "type": "CHOICE",

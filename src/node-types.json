@@ -1487,6 +1487,29 @@
     }
   },
   {
+    "type": "flow_annotation_pair",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "flow_annotation_key",
+          "named": true
+        },
+        {
+          "type": "flow_annotation_value_bare",
+          "named": true
+        },
+        {
+          "type": "flow_annotation_value_quoted",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "flow_arrow_text",
     "named": true,
     "fields": {},
@@ -1776,11 +1799,11 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "flow_vertex_annotation_body",
+          "type": "flow_annotation_pair",
           "named": true
         }
       ]
@@ -4225,15 +4248,23 @@
     "named": false
   },
   {
+    "type": "flow_annotation_key",
+    "named": true
+  },
+  {
+    "type": "flow_annotation_value_bare",
+    "named": true
+  },
+  {
+    "type": "flow_annotation_value_quoted",
+    "named": true
+  },
+  {
     "type": "flow_link_invisible",
     "named": true
   },
   {
     "type": "flow_text_icon",
-    "named": true
-  },
-  {
-    "type": "flow_vertex_annotation_body",
     "named": true
   },
   {
