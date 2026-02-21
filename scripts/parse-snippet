@@ -1,0 +1,20 @@
+#!/bin/bash
+# Parse a Mermaid snippet from stdin and print its CST.
+#
+# Usage:
+#   printf 'flowchart LR\n    A --> B\n' | ./scripts/parse-snippet
+#
+#   ./scripts/parse-snippet <<'EOF'
+#   flowchart LR
+#       A --> B
+#   EOF
+#
+# Run from anywhere — the script always invokes tree-sitter from the grammar
+# repo root so the grammar is auto-detected (no "parser directories" warning).
+
+set -e
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
+tmp=$(mktemp /tmp/mermaid-snippet-XXXXXX.mmd)
+trap 'rm -f "$tmp"' EXIT
+cat > "$tmp"
+cd "$REPO" && tree-sitter parse "$tmp"
