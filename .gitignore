@@ -27,22 +27,15 @@ Thumbs.db
 # Test artifacts
 test_mermaid
 
-# Nix
-result
-.direnv/
-.envrc.local
-
 # Swift Package Manager
 .build/
 Package.resolved
-
-# Mermaid spec checking
-mermaid-examples/
 
 # Node.js
 node_modules/
 package-lock.json
 *.tgz
+prebuilds/
 
 # Python
 __pycache__/
@@ -51,5 +44,3 @@ __pycache__/
 *.egg-info/
 dist/
 *.egg
-
-10-singularity-prs/

@@ -1,52 +1,58 @@
 {
   "name": "tree-sitter-mermaid",
-  "version": "0.9.1",
-  "description": "🚀 Singularity tree-sitter-mermaid - A complete Mermaid.js grammar with 100% test coverage (23/23 types)",
+  "version": "0.25.0",
+  "description": "Mermaid.js grammar for tree-sitter",
+  "repository": "https://github.com/mglst/tree-sitter-mermaid",
+  "license": "MIT",
+  "author": "monaqa",
+  "contributors": [
+    "Singularity",
+    {
+      "name": "Maximilien Tirard",
+      "email": "maximilien.tirard@gmail.com"
+    }
+  ],
   "main": "bindings/node",
   "types": "bindings/node",
-  "scripts": {
-    "build": "tree-sitter build --output ./build/mermaid.so",
-    "test": "tree-sitter test",
-    "generate": "tree-sitter generate",
-    "install": "node-gyp-build",
-    "prebuildify": "prebuildify --napi --strip"
-  },
   "keywords": [
-    "tree-sitter"
+    "incremental",
+    "parsing",
+    "tree-sitter",
+    "mermaid"
   ],
   "files": [
     "grammar.js",
+    "tree-sitter.json",
     "binding.gyp",
     "prebuilds/**",
     "bindings/node/*",
     "queries/*",
-    "src/**"
+    "src/**",
+    "*.wasm"
   ],
-  "author": "Singularity",
-  "license": "MIT",
   "dependencies": {
     "node-addon-api": "^8.5.0",
     "node-gyp-build": "^4.8.4"
+  },
+  "devDependencies": {
+    "eslint": "^10.0.1",
+    "eslint-config-treesitter": "^1.0.2",
+    "prebuildify": "^6.0.1",
+    "tree-sitter-cli": "^0.26.0"
   },
   "peerDependencies": {
     "tree-sitter": "^0.26.0"
   },
   "peerDependenciesMeta": {
-    "tree_sitter": {
+    "tree-sitter": {
       "optional": true
     }
   },
-  "devDependencies": {
-    "tree-sitter-cli": "^0.26.0",
-    "prebuildify": "^6.0.1"
-  },
-  "tree-sitter": [
-    {
-      "scope": "source.mermaid",
-      "file-types": [
-        "mmd"
-      ],
-      "injection-regex": "mermaid|mmd"
-    }
-  ]
+  "scripts": {
+    "install": "node-gyp-build",
+    "lint": "eslint grammar.js",
+    "prestart": "tree-sitter build --wasm",
+    "start": "tree-sitter playground",
+    "test": "node --test bindings/node/*_test.js"
+  }
 }
