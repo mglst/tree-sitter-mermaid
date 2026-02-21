@@ -824,6 +824,40 @@
     "fields": {}
   },
   {
+    "type": "css_pair",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "css_property_name",
+          "named": true
+        },
+        {
+          "type": "css_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "css_property_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "css_pair",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "diagram_architecture",
     "named": true,
     "fields": {},
@@ -1658,11 +1692,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "classdef_name",
+          "named": true
+        },
+        {
+          "type": "css_property_list",
           "named": true
         }
       ]
@@ -1693,9 +1731,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "css_property_list",
+          "named": true
+        },
         {
           "type": "flow_vertex_id",
           "named": true
@@ -4178,6 +4220,14 @@
   {
     "type": "commit",
     "named": false
+  },
+  {
+    "type": "css_property_name",
+    "named": true
+  },
+  {
+    "type": "css_value",
+    "named": true
   },
   {
     "type": "dateformat",

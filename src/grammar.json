@@ -3172,8 +3172,16 @@
           "name": "flow_vertex_id"
         },
         {
-          "type": "PATTERN",
-          "value": "[^\\n]*"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "css_property_list"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -3201,10 +3209,81 @@
           "name": "classdef_name"
         },
         {
-          "type": "PATTERN",
-          "value": "[^\\n]*"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "css_property_list"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
+    },
+    "css_property_list": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "css_pair"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "SYMBOL",
+                "name": "css_pair"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "css_pair": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "css_property_name"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ":"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "css_value"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "css_property_name": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z0-9][a-zA-Z0-9-.]*"
+    },
+    "css_value": {
+      "type": "PATTERN",
+      "value": "[^,\\n]+"
     },
     "flow_stmt_class": {
       "type": "SEQ",

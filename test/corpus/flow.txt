@@ -1215,11 +1215,86 @@ flowchart LR
         (flow_vertex
           (flow_vertex_id))))
     (flow_stmt_classdef
-      (classdef_name))
+      (classdef_name)
+      (css_property_list
+        (css_pair
+          (css_property_name)
+          (css_value))))
     (flow_stmt_style
-      (flow_vertex_id))
+      (flow_vertex_id)
+      (css_property_list
+        (css_pair
+          (css_property_name)
+          (css_value))))
     (flow_stmt_class
       (flow_vertex_id)
+      (classdef_name))))
+
+==========================
+classDef with multiple CSS properties (issue #57)
+==========================
+
+flowchart LR
+    classDef highlight fill:#f9f,stroke:#333,stroke-width:2px
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_lr)
+    (flow_stmt_classdef
+      (classdef_name)
+      (css_property_list
+        (css_pair
+          (css_property_name)
+          (css_value))
+        (css_pair
+          (css_property_name)
+          (css_value))
+        (css_pair
+          (css_property_name)
+          (css_value))))))
+
+==========================
+style with multiple CSS properties (issue #57)
+==========================
+
+flowchart LR
+    A
+    style A fill:#bbf,stroke:#f66
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_lr)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))
+    (flow_stmt_style
+      (flow_vertex_id)
+      (css_property_list
+        (css_pair
+          (css_property_name)
+          (css_value))
+        (css_pair
+          (css_property_name)
+          (css_value))))))
+
+==========================
+classDef with no CSS body (issue #57)
+==========================
+
+flowchart LR
+    classDef empty
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_lr)
+    (flow_stmt_classdef
       (classdef_name))))
 
 ==========================

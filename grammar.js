@@ -747,10 +747,20 @@ module.exports = grammar({
 
         flow_stmt_direction: $ => seq(kwd("direction"), $._flowchart_direction),
 
-        // Style / class directives (issue #7) — structured: expose node ID and class name
-        // as named CST children; CSS/property body remains an opaque rest-of-line token.
-        flow_stmt_style: $ => seq(kwd("style"), $.flow_vertex_id, /[^\n]*/),
-        flow_stmt_classdef: $ => seq(kwd("classDef"), $.classdef_name, /[^\n]*/),
+        // Style / class directives (issue #7, #57) — structured: expose node ID and class name
+        // as named CST children; CSS body is parsed as a structured css_property_list.
+        flow_stmt_style: $ => seq(kwd("style"), $.flow_vertex_id, optional($.css_property_list)),
+        flow_stmt_classdef: $ => seq(kwd("classDef"), $.classdef_name, optional($.css_property_list)),
+
+        // CSS property list: comma-separated key:value pairs (issue #57).
+        // Value token is permissive — stops at comma or newline; semantic validation in Analyzer.
+        // css_property_name allows leading digits so that orphan numeric segments from CSS values
+        // that contain commas (e.g. stroke-dasharray: 9,5) produce no ERROR nodes; the Analyzer
+        // skips css_pair nodes that have no css_value child.
+        css_property_list: $ => sep($.css_pair, ","),
+        css_pair: $ => seq($.css_property_name, optional(seq(":", $.css_value))),
+        css_property_name: $ => /[a-zA-Z0-9][a-zA-Z0-9-.]*/,
+        css_value: $ => /[^,\n]+/,
         // `class A,B,C myStyle` — comma-separated node IDs then a class name.
         // Commas must be written without surrounding spaces (Mermaid's parser requirement).
         flow_stmt_class: $ => seq(kwd("class"), sep($.flow_vertex_id, ","), optional($.classdef_name)),
