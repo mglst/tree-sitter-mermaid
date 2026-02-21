@@ -1,10 +1,10 @@
-const root = require("path").join(__dirname, "..", "..");
+const path = require("path");
+const root = path.join(__dirname, "..", "..");
 
-module.exports =
-  typeof process.versions.bun === "string"
-    ? require(`../../prebuilds/${process.platform}-${process.arch}/tree-sitter-mermaid.node`)
-    : require("node-gyp-build")(root);
+module.exports = require(
+  path.join(root, "prebuilds", `${process.platform}-${process.arch}`, "tree-sitter-mermaid.node")
+);
 
 try {
-  module.exports.nodeTypeInfo = require("../../src/node-types.json");
+  module.exports.nodeTypeInfo = require(path.join(root, "src", "node-types.json"));
 } catch (_) {}
