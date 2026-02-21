@@ -83,23 +83,6 @@ unsigned tree_sitter_mermaid_external_scanner_serialize(void *payload, char *buf
 void tree_sitter_mermaid_external_scanner_deserialize(void *payload, const char *buffer, unsigned length) {}
 
 /**
- * Checks if a character is a valid word character
- *
- * Used to determine if a character could be part of a regular identifier/word.
- * Letters, digits, and underscore are considered word characters.
- *
- * @param c Character to test
- * @returns true if c is alphanumeric or underscore, false otherwise
- * @private
- */
-static bool is_word_char(int32_t c) {
-    return (c >= 'a' && c <= 'z') ||
-           (c >= 'A' && c <= 'Z') ||
-           (c >= '0' && c <= '9') ||
-           c == '_';
-}
-
-/**
  * Main external scanner function
  *
  * This function is called during tokenization whenever the regular lexer

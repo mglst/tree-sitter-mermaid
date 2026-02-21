@@ -40,7 +40,7 @@
   },
   "scripts": {
     "lint": "eslint grammar.js",
-    "prebuildify": "prebuildify --napi --strip",
+    "prebuildify": "npm_config_loglevel=warn prebuildify --napi --strip",
     "prestart": "tree-sitter build --wasm",
     "start": "tree-sitter playground",
     "test": "node --test bindings/node/*_test.js"
