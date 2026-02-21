@@ -6,7 +6,10 @@
   "license": "MIT",
   "author": "monaqa",
   "contributors": [
-    "Singularity",
+    {
+      "name": "Mikael Hugo",
+      "url": "https://github.com/mikkihugo"
+    },
     {
       "name": "Maximilien Tirard",
       "email": "maximilien.tirard@gmail.com"

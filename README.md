@@ -64,4 +64,4 @@ npm start
 
 ## Credits
 
-Originally by [Mogami Shinichi](https://github.com/monaqa). Forked via [Singularity](https://github.com/singularity-ng).
+Originally by [Mogami Shinichi](https://github.com/monaqa). Forked via [Mikael Hugo](https://github.com/singularity-ng).

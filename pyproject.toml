@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "tree-sitter-mermaid"
 description = "Mermaid.js grammar for tree-sitter"
 version = "0.25.0"
-keywords = ["mermaid", "tree-sitter", "parser", "diagram"]
+keywords = ["incremental", "parsing", "tree-sitter", "mermaid"]
 classifiers = [
   "Intended Audience :: Developers",
   "License :: OSI Approved :: MIT License",
@@ -16,6 +16,7 @@ classifiers = [
 ]
 authors = [
   { name = "Mogami Shinichi", email = "monaqa@users.noreply.github.com" },
+  { name = "Mikael Hugo", url = "https://github.com/mikkihugo"},
   { name = "Maximilien Tirard", email = "maximilien.tirard@gmail.com" },
 ]
 requires-python = ">=3.10"
@@ -26,7 +27,7 @@ readme = "README.md"
 Homepage = "https://github.com/mglst/tree-sitter-mermaid"
 
 [project.optional-dependencies]
-core = ["tree-sitter~=0.24"]
+core = ["tree-sitter~=0.25"]
 
 [tool.cibuildwheel]
 build = "cp310-*"
