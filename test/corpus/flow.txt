@@ -1121,7 +1121,7 @@ flowchart TD
               (flow_vertex_id))))))))
 
 ==========================
-Empty @{} body produces a parse error
+Empty @{} body is valid syntax (semantic error, not parse error)
 ==========================
 
 flowchart TD
@@ -1135,9 +1135,8 @@ flowchart TD
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
-          (flow_vertex_id)))))
-  (ERROR
-    (ERROR)))
+          (flow_vertex_id)
+          (flow_vertex_annotation))))))
 
 ==========================
 Triple-paren double-circle shape (issue #9)

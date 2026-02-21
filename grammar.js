@@ -824,14 +824,16 @@ module.exports = grammar({
         flow_vertex_annotation: $ => seq(
             "@{",
             optional($._newline),
-            $.flow_annotation_pair,
-            repeat(seq(
+            optional(seq(
+                $.flow_annotation_pair,
+                repeat(seq(
+                    optional(","),
+                    optional($._newline),
+                    $.flow_annotation_pair,
+                )),
                 optional(","),
                 optional($._newline),
-                $.flow_annotation_pair,
             )),
-            optional(","),
-            optional($._newline),
             "}",
         ),
         flow_annotation_pair: $ => seq(
