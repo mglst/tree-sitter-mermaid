@@ -753,7 +753,7 @@ module.exports = grammar({
         flow_stmt_classdef: $ => seq(kwd("classDef"), $.classdef_name, /[^\n]*/),
         // `class A,B,C myStyle` — comma-separated node IDs then a class name.
         // Commas must be written without surrounding spaces (Mermaid's parser requirement).
-        flow_stmt_class: $ => seq(kwd("class"), sep($.flow_vertex_id, ","), $.classdef_name),
+        flow_stmt_class: $ => seq(kwd("class"), sep($.flow_vertex_id, ","), optional($.classdef_name)),
 
         // Shared name token for classDef definitions and class assignments.
         classdef_name: $ => $._flow_vertex_id_token,
@@ -773,7 +773,13 @@ module.exports = grammar({
             $.flow_link_arrowtext,
             $.flow_link_middletext,
             $.flow_link_invisible_link,
+            $.flow_link_invalid_arrow,
         ),
+
+        // `->` is not a valid flowchart arrow (requires `-->`). Named as a grammar rule
+        // so the full two-character token is captured as a CST node rather than producing
+        // an ERROR node containing only `-`. The analyzer emits a semantic diagnostic.
+        flow_link_invalid_arrow: $ => token(prec(1, "->")),
 
         flow_link_simplelink: $ => seq($.flow_link_arrow),
         flow_link_invisible_link: $ => seq($.flow_link_invisible),

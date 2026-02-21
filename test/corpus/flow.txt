@@ -1470,3 +1470,39 @@ flowchart TD
           (flow_vertex_id)
           (flow_vertex_inv_trapezoid
             (flow_text_literal)))))))
+
+==========================
+invalid arrow `->` captured as flow_link_invalid_arrow
+==========================
+
+flowchart LR
+    A -> B
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_lr)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)))
+      (flow_link_invalid_arrow)
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))))
+
+==========================
+class statement without class name (missing classdef_name)
+==========================
+
+flowchart LR
+    class A
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_lr)
+    (flow_stmt_class
+      (flow_vertex_id))))

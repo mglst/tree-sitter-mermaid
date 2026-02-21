@@ -156,6 +156,10 @@
         "named": true
       },
       {
+        "type": "flow_link_invalid_arrow",
+        "named": true
+      },
+      {
         "type": "flow_link_invisible_link",
         "named": true
       },
@@ -4257,6 +4261,10 @@
   },
   {
     "type": "flow_annotation_value_quoted",
+    "named": true
+  },
+  {
+    "type": "flow_link_invalid_arrow",
     "named": true
   },
   {

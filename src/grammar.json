@@ -3251,8 +3251,16 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "classdef_name"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "classdef_name"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -3357,8 +3365,23 @@
         {
           "type": "SYMBOL",
           "name": "flow_link_invisible_link"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "flow_link_invalid_arrow"
         }
       ]
+    },
+    "flow_link_invalid_arrow": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "STRING",
+          "value": "->"
+        }
+      }
     },
     "flow_link_simplelink": {
       "type": "SEQ",
