@@ -3053,8 +3053,11 @@
                   ]
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "_newline"
+                  "type": "REPEAT1",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_newline"
+                  }
                 }
               ]
             },
@@ -8571,6 +8574,9 @@
     [
       "flow_stmt_direction",
       "flow_vertex_id"
+    ],
+    [
+      "diagram_flow"
     ]
   ],
   "precedences": [],

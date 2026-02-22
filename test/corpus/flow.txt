@@ -1581,3 +1581,25 @@ flowchart LR
     (flowchart_direction_lr)
     (flow_stmt_class
       (flow_vertex_id))))
+
+==========================
+Trailing whitespace-only lines (issue #51)
+==========================
+
+flowchart LR
+    A --> B
+     
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_lr)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)))
+      (flow_link_simplelink
+        (flow_link_arrow))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))))
