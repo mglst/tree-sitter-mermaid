@@ -729,7 +729,7 @@ module.exports = grammar({
             optional($._newline),
             // Allow multiple newlines as separator (blank lines between statements,
             // e.g. after a comment whose \n is consumed by the comment token — #6)
-            sep($._flow_stmt, seq(choice($._newline, ";"), repeat($._newline))),
+            optional(sep($._flow_stmt, seq(choice($._newline, ";"), repeat($._newline)))),
             // repeat1 instead of a single _newline so that whitespace-only trailing lines
             // are consumed: extras eat the spaces, repeat1 consumes each bare \n in turn.
             optional(choice(seq(";", optional($._newline)), repeat1($._newline))),

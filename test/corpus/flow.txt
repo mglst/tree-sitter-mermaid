@@ -1621,3 +1621,27 @@ flowchart LR
       (flow_node
         (flow_vertex
           (flow_vertex_id))))))
+
+==========================
+Empty flowchart body - flowchart LR (issue #69)
+==========================
+
+flowchart LR
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_lr)))
+
+==========================
+Empty flowchart body - graph TD (issue #69)
+==========================
+
+graph TD
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)))
