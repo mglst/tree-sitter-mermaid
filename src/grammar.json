@@ -3841,12 +3841,24 @@
       "value": "[a-zA-Z][a-zA-Z0-9-]*"
     },
     "flow_annotation_value_quoted": {
-      "type": "PATTERN",
-      "value": "\"([^\"\\\\]|\\\\.)*\""
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "\"([^\"\\\\]|\\\\.)*\""
+        },
+        {
+          "type": "PATTERN",
+          "value": "'([^'\\\\]|\\\\.)*'"
+        }
+      ]
     },
     "flow_annotation_value_bare": {
-      "type": "PATTERN",
-      "value": "[a-zA-Z0-9_~!?.-]+"
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[a-zA-Z0-9_~!?.-]+([ \\t]+[a-zA-Z0-9_~!?.-]+)*"
+      }
     },
     "flow_vertex_square": {
       "type": "SEQ",

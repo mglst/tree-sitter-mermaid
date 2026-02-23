@@ -865,8 +865,8 @@ module.exports = grammar({
             choice($.flow_annotation_value_quoted, $.flow_annotation_value_bare),
         ),
         flow_annotation_key: $ => /[a-zA-Z][a-zA-Z0-9-]*/,
-        flow_annotation_value_quoted: $ => /"([^"\\]|\\.)*"/,
-        flow_annotation_value_bare: $ => /[a-zA-Z0-9_~!?.-]+/,
+        flow_annotation_value_quoted: $ => choice(/"([^"\\]|\\.)*"/, /'([^'\\]|\\.)*'/),
+        flow_annotation_value_bare: $ => token(/[a-zA-Z0-9_~!?.-]+([ \t]+[a-zA-Z0-9_~!?.-]+)*/),
         flow_vertex_square: $ => seq( "[", $._flow_text_slash, "]" ),
         flow_vertex_double_circle: $ => seq("(((", $._flow_text_slash, ")))"),  // issue #9: triple-paren
         flow_vertex_circle: $ => seq("((", $._flow_text_slash, "))"),

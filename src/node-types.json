@@ -1548,6 +1548,11 @@
     }
   },
   {
+    "type": "flow_annotation_value_quoted",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "flow_arrow_text",
     "named": true,
     "fields": {},
@@ -4311,10 +4316,6 @@
   },
   {
     "type": "flow_annotation_value_bare",
-    "named": true
-  },
-  {
-    "type": "flow_annotation_value_quoted",
     "named": true
   },
   {

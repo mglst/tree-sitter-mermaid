@@ -1061,6 +1061,48 @@ flowchart TD
               (flow_annotation_value_bare))))))))
 
 ==========================
+Node annotation @{} - single-quoted value
+==========================================
+
+flowchart TD
+    A@{ label: 'some text' }
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_annotation
+            (flow_annotation_pair
+              (flow_annotation_key)
+              (flow_annotation_value_quoted))))))))
+
+==========================
+Node annotation @{} - unquoted multi-word label
+================================================
+
+flowchart TD
+    A@{ label: some text }
+
+---
+
+(source_file
+  (diagram_flow
+    (flowchart_direction_tb)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_annotation
+            (flow_annotation_pair
+              (flow_annotation_key)
+              (flow_annotation_value_bare))))))))
+
+==========================
 Hyphenated text in node label (BUG-4)
 ==========================
 
