@@ -1779,6 +1779,10 @@
         {
           "type": "_flow_stmt",
           "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
         }
       ]
     }

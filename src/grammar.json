@@ -4274,6 +4274,10 @@
           {
             "type": "SYMBOL",
             "name": "_newline"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "comment"
           }
         ]
       }

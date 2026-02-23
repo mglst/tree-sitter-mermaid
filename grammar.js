@@ -899,7 +899,7 @@ module.exports = grammar({
             optional($.flow_stmt_subgraph_inner),
             "end",
         ),
-        flow_stmt_subgraph_inner: $ => repeat1(choice(seq($._flow_stmt, choice($._newline, ";")), $._newline)),
+        flow_stmt_subgraph_inner: $ => repeat1(choice(seq($._flow_stmt, choice($._newline, ";")), $._newline, $.comment)),
         flow_vertex_text: $ => repeat1($._alpha_num_token),
 
         /// ER diagram
