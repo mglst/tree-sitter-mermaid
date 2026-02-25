@@ -8232,27 +8232,43 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "[xo<]?--+[-xo>]"
+          "value": "[xo<]--+[-xo>]?"
         },
         {
           "type": "PATTERN",
-          "value": "[xo<]?==+[=xo>]"
+          "value": "--+[-xo>]"
         },
         {
           "type": "PATTERN",
-          "value": "[xo<]?-?\\.+-[xo>]"
+          "value": "[xo<]==+[=xo>]?"
         },
         {
           "type": "PATTERN",
-          "value": "[a-zA-Z0-9_~!?]+@[xo<]?--+[-xo>]"
+          "value": "==+[=xo>]"
         },
         {
           "type": "PATTERN",
-          "value": "[a-zA-Z0-9_~!?]+@[xo<]?==+[=xo>]"
+          "value": "[xo<]?-?\\.+-[xo>]?"
         },
         {
           "type": "PATTERN",
-          "value": "[a-zA-Z0-9_~!?]+@[xo<]?-?\\.+-[xo>]"
+          "value": "[a-zA-Z0-9_~!?]+@[xo<]--+[-xo>]?"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[a-zA-Z0-9_~!?]+@--+[-xo>]"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[a-zA-Z0-9_~!?]+@[xo<]==+[=xo>]?"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[a-zA-Z0-9_~!?]+@==+[=xo>]"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[a-zA-Z0-9_~!?]+@[xo<]?-?\\.+-[xo>]?"
         }
       ]
     },

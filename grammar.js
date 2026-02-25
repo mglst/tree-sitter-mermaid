@@ -141,13 +141,20 @@ const tokens = {
 
     // 適当
     flow_link_arrow: choice(
-        /[xo<]?--+[-xo>]/,
-        /[xo<]?==+[=xo>]/,
-        /[xo<]?-?\.+-[xo>]/,
+        // Solid: left-marker present → right marker optional; no left-marker → right required
+        /[xo<]--+[-xo>]?/,
+        /--+[-xo>]/,
+        // Thick: same split
+        /[xo<]==+[=xo>]?/,
+        /==+[=xo>]/,
+        // Dotted: right marker optional for all forms (covers -.- and <-.- etc.)
+        /[xo<]?-?\.+-[xo>]?/,
         // Mermaid v11 edge-ID annotation prefix (e.g. `e1@-->`)
-        /[a-zA-Z0-9_~!?]+@[xo<]?--+[-xo>]/,
-        /[a-zA-Z0-9_~!?]+@[xo<]?==+[=xo>]/,
-        /[a-zA-Z0-9_~!?]+@[xo<]?-?\.+-[xo>]/,
+        /[a-zA-Z0-9_~!?]+@[xo<]--+[-xo>]?/,
+        /[a-zA-Z0-9_~!?]+@--+[-xo>]/,
+        /[a-zA-Z0-9_~!?]+@[xo<]==+[=xo>]?/,
+        /[a-zA-Z0-9_~!?]+@==+[=xo>]/,
+        /[a-zA-Z0-9_~!?]+@[xo<]?-?\.+-[xo>]?/,
     ),
     flow_link_arrow_start: choice(
         /[xo<]?--+/,
