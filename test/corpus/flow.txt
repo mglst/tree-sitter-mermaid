@@ -187,7 +187,6 @@ flowchart LR
           (flow_vertex_inv_trapezoid
             (flow_text_literal)))))))
 
-
 ==========================
 Links
 ==========================
@@ -330,7 +329,6 @@ flowchart LR
       (flow_node
         (flow_vertex
           (flow_vertex_id))))))
-
 
 ==========================
 Arrow types
@@ -513,7 +511,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -759,6 +757,7 @@ flowchart LR
       (flow_node
         (flow_vertex
           (flow_vertex_id))))))
+
 ==========================
 Node with hyphen in name (Issue #13)
 ==========================
@@ -770,7 +769,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -795,7 +794,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -824,7 +823,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -862,7 +861,7 @@ graph TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -910,7 +909,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -960,7 +959,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -1046,7 +1045,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_subgraph
       (flow_vertex_text)
       (flow_vertex_text))))
@@ -1062,7 +1061,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -1080,7 +1079,7 @@ flowchart TD
 
 ==========================
 Node annotation @{} - single pair bare value
-=============================================
+==========================
 
 flowchart TD
     A@{ shape: circle }
@@ -1089,7 +1088,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -1101,7 +1100,7 @@ flowchart TD
 
 ==========================
 Node annotation @{} - quoted value
-===================================
+==========================
 
 flowchart TD
     A@{ label: "My Node" }
@@ -1110,7 +1109,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -1122,7 +1121,7 @@ flowchart TD
 
 ==========================
 Node annotation @{} - multi-pair with comma
-============================================
+==========================
 
 flowchart TD
     A@{ shape: circle, label: "X" }
@@ -1131,7 +1130,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -1146,7 +1145,7 @@ flowchart TD
 
 ==========================
 Node annotation @{} - multi-line
-==================================
+==========================
 
 flowchart TD
     A@{
@@ -1157,7 +1156,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -1169,7 +1168,7 @@ flowchart TD
 
 ==========================
 Node annotation @{} - single-quoted value
-==========================================
+==========================
 
 flowchart TD
     A@{ label: 'some text' }
@@ -1178,7 +1177,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -1190,7 +1189,7 @@ flowchart TD
 
 ==========================
 Node annotation @{} - unquoted multi-word label
-================================================
+==========================
 
 flowchart TD
     A@{ label: some text }
@@ -1199,7 +1198,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -1221,7 +1220,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -1255,7 +1254,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_subgraph
       (flow_vertex_text)
       (flow_stmt_subgraph_inner
@@ -1298,7 +1297,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -1316,7 +1315,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -1595,7 +1594,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -1631,7 +1630,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -1667,7 +1666,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -1694,7 +1693,7 @@ flowchart TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)
+    (flowchart_direction_td)
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
@@ -1794,7 +1793,7 @@ graph TD
 
 (source_file
   (diagram_flow
-    (flowchart_direction_tb)))
+    (flowchart_direction_td)))
 
 ==========================
 Whitespace-only line before comments followed by blank lines (issue #N)

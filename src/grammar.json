@@ -3088,6 +3088,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "flowchart_direction_td"
+        },
+        {
+          "type": "SYMBOL",
           "name": "flowchart_direction_bt"
         }
       ]
@@ -8140,26 +8144,26 @@
           "value": "tb"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "TOKEN",
-            "content": {
-              "type": "PREC",
-              "value": 1,
-              "content": {
-                "type": "PATTERN",
-                "value": "[tT][dD]"
-              }
-            }
-          },
-          "named": false,
-          "value": "td"
-        },
-        {
           "type": "STRING",
           "value": "v"
         }
       ]
+    },
+    "flowchart_direction_td": {
+      "type": "ALIAS",
+      "content": {
+        "type": "TOKEN",
+        "content": {
+          "type": "PREC",
+          "value": 1,
+          "content": {
+            "type": "PATTERN",
+            "value": "[tT][dD]"
+          }
+        }
+      },
+      "named": false,
+      "value": "td"
     },
     "flowchart_direction_bt": {
       "type": "CHOICE",

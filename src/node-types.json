@@ -300,6 +300,10 @@
       {
         "type": "flowchart_direction_tb",
         "named": true
+      },
+      {
+        "type": "flowchart_direction_td",
+        "named": true
       }
     ]
   },
@@ -2279,6 +2283,11 @@
   },
   {
     "type": "flowchart_direction_tb",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "flowchart_direction_td",
     "named": true,
     "fields": {}
   },

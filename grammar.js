@@ -130,7 +130,8 @@ const tokens = {
     /// tokens in flow chart
     flowchart_direction_lr: choice(kwd("lr"), kwd("br"), ">"),
     flowchart_direction_rl: choice(kwd("rl"), "<"),
-    flowchart_direction_tb: choice(kwd("tb"), kwd("td"), "v"),
+    flowchart_direction_tb: choice(kwd("tb"), "v"),
+    flowchart_direction_td: kwd("td"),
     flowchart_direction_bt: choice(kwd("bt"), "^"),
 
     flow_text_literal: repeat1(choice(/[^|}\])\s\n;/\\"<>]+/, /<[^>]*>/)),
@@ -744,6 +745,7 @@ module.exports = grammar({
             $.flowchart_direction_lr,
             $.flowchart_direction_rl,
             $.flowchart_direction_tb,
+            $.flowchart_direction_td,
             $.flowchart_direction_bt,
         ),
 
