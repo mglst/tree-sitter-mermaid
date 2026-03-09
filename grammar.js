@@ -47,7 +47,7 @@ const tokens = {
     /// common tokens
     _whitespace: /[ \t]+/,
     _newline: /(\n)+/,
-    comment: /%%([^\{].*)?\n/,
+    comment: /%%([^\{\n].*)?\n/,
     _md_start: /"`/,
     _md_end: /`"/,
 
@@ -135,7 +135,6 @@ const tokens = {
 
     flow_text_literal: repeat1(choice(/[^|}\])\s\n;/\\"<>]+/, /<[^>]*>/)),
     flow_text_literal_slash: repeat1(choice(/[^|}\])\s\n;\\"<>]+/, /<[^>]*>/)),
-    flow_text_quoted: (/"[^"]*"/),
     flow_text_icon: token(prec(1, /[a-zA-Z]+:[a-zA-Z][a-zA-Z0-9]*(-[a-zA-Z][a-zA-Z0-9]*)*([ \t]+[a-zA-Z0-9_~!?]+)*/)),
     _flow_vertex_id_token: token(prec(-1, /[a-zA-Z0-9_~!?]+(-[a-zA-Z0-9_~!?]+)*/)),
 
@@ -733,7 +732,7 @@ module.exports = grammar({
                 $._flowchart_direction,
                 $._newline,
             ),
-            optional($._newline),
+            repeat($._newline),
             // Allow multiple newlines as separator (blank lines between statements,
             // e.g. after a comment whose \n is consumed by the comment token — #6)
             optional(sep($._flow_stmt, seq(choice($._newline, ";"), repeat($._newline)))),
@@ -813,6 +812,9 @@ module.exports = grammar({
             alias($._flow_arrow_text_mid, $.flow_arrow_text),
             $.flow_link_arrow,
         ),
+        // Quoted text node — exposes content without surrounding quotes via flow_text_quoted_content child.
+        flow_text_quoted: $ => seq('"', alias(/[^"]*/, $.flow_text_quoted_content), '"'),
+
         // Pipe-delimited label (-->|text|): allow full flow_text_literal so dashes, colons,
         // slashes, etc. work without quoting (the | delimiter resolves ambiguity).
         flow_arrow_text: $ => choice($.flow_text_literal, $.flow_text_quoted),

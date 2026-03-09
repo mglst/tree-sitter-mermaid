@@ -1824,7 +1824,17 @@
   {
     "type": "flow_text_quoted",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "flow_text_quoted_content",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "flow_vertex",
@@ -3878,6 +3888,10 @@
     "fields": {}
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
     "type": "%%{",
     "named": false
   },
@@ -4328,6 +4342,10 @@
   },
   {
     "type": "flow_text_icon",
+    "named": true
+  },
+  {
+    "type": "flow_text_quoted_content",
     "named": true
   },
   {

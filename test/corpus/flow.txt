@@ -661,20 +661,23 @@ flowchart LR
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_quoted)))))
+            (flow_text_quoted
+              (flow_text_quoted_content))))))
     (flow_stmt_vertice
       (flow_node
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_quoted))))
+            (flow_text_quoted
+              (flow_text_quoted_content)))))
       (flow_link_simplelink
         (flow_link_arrow))
       (flow_node
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_quoted)))))))
+            (flow_text_quoted
+              (flow_text_quoted_content))))))))
 
 ==========================
 Subgraph
@@ -798,7 +801,8 @@ flowchart TD
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_quoted))))
+            (flow_text_quoted
+              (flow_text_quoted_content)))))
       (flow_link_middletext
         (flow_link_arrow_start)
         (flow_arrow_text)
@@ -837,7 +841,8 @@ flowchart TD
         (flow_vertex
           (flow_vertex_id)
           (flow_vertex_square
-            (flow_text_quoted))))
+            (flow_text_quoted
+              (flow_text_quoted_content)))))
       (flow_link_middletext
         (flow_link_arrow_start)
         (flow_arrow_text)
@@ -1025,9 +1030,9 @@ flowchart LR
         (flow_link_arrow))
       (flow_node
         (flow_vertex
-          (flow_vertex_id))))
-    (ERROR
-      (UNEXPECTED 'j'))))
+          (flow_vertex_id)))))
+  (ERROR
+    (flow_text_quoted_content)))
 
 ==========================
 Subgraph with id[label] form
@@ -1498,7 +1503,8 @@ end
   (diagram_flow
     (flowchart_direction_lr)
     (flow_stmt_subgraph
-      (flow_text_quoted)
+      (flow_text_quoted
+        (flow_text_quoted_content))
       (flow_stmt_subgraph_inner
         (flow_stmt_vertice
           (flow_node
@@ -1789,3 +1795,43 @@ graph TD
 (source_file
   (diagram_flow
     (flowchart_direction_tb)))
+
+==========================
+Whitespace-only line before comments followed by blank lines (issue #N)
+==========================
+
+flowchart
+    
+    %%a
+    
+    %%s
+    A
+
+---
+
+(source_file
+  (diagram_flow
+    (comment)
+    (comment)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))))
+
+==========================
+Bare %% parses as a comment (not a node)
+==========================
+
+flowchart
+    %%
+    A
+
+---
+
+(source_file
+  (diagram_flow
+    (comment)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))))
