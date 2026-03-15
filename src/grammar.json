@@ -46,7 +46,11 @@
             },
             {
               "type": "SYMBOL",
-              "name": "diagram_flow"
+              "name": "diagram_flowchart"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "diagram_graph"
             },
             {
               "type": "SYMBOL",
@@ -2914,45 +2918,160 @@
         }
       ]
     },
-    "diagram_flow": {
+    "diagram_flowchart": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[fF][lL][oO][wW][cC][hH][aA][rR][tT]"
+              }
+            }
+          },
+          "named": false,
+          "value": "flowchart"
+        },
         {
           "type": "CHOICE",
           "members": [
             {
-              "type": "ALIAS",
-              "content": {
-                "type": "TOKEN",
-                "content": {
-                  "type": "PREC",
-                  "value": 1,
-                  "content": {
-                    "type": "PATTERN",
-                    "value": "[fF][lL][oO][wW][cC][hH][aA][rR][tT]"
-                  }
-                }
-              },
-              "named": false,
-              "value": "flowchart"
+              "type": "SYMBOL",
+              "name": "_flowchart_direction"
             },
             {
-              "type": "ALIAS",
-              "content": {
-                "type": "TOKEN",
-                "content": {
-                  "type": "PREC",
-                  "value": 1,
-                  "content": {
-                    "type": "PATTERN",
-                    "value": "[gG][rR][aA][pP][hH]"
-                  }
-                }
-              },
-              "named": false,
-              "value": "graph"
+              "type": "SYMBOL",
+              "name": "_newline"
             }
           ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_newline"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_flow_stmt"
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "CHOICE",
+                            "members": [
+                              {
+                                "type": "SYMBOL",
+                                "name": "_newline"
+                              },
+                              {
+                                "type": "STRING",
+                                "value": ";"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "REPEAT",
+                            "content": {
+                              "type": "SYMBOL",
+                              "name": "_newline"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "_flow_stmt"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": ";"
+                    },
+                    {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "_newline"
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "REPEAT1",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_newline"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "diagram_graph": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[gG][rR][aA][pP][hH]"
+              }
+            }
+          },
+          "named": false,
+          "value": "graph"
         },
         {
           "type": "CHOICE",
@@ -8633,7 +8752,10 @@
       "flow_vertex_id"
     ],
     [
-      "diagram_flow"
+      "diagram_flowchart"
+    ],
+    [
+      "diagram_graph"
     ]
   ],
   "precedences": [],

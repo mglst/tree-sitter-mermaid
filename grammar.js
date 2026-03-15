@@ -272,11 +272,12 @@ module.exports = grammar({
         // (flow_vertex_id). GLR explores both; prec(1) on flow_stmt_direction
         // resolves the case where both are valid (e.g. `direction LR`).
         [$.flow_stmt_direction, $.flow_vertex_id],
-        // Trailing newlines in diagram_flow: after the last statement, consecutive
-        // _newline tokens (from whitespace-only lines) are ambiguous between the sep
-        // delimiter's repeat($._newline) and the trailing repeat1($._newline).
+        // Trailing newlines in diagram_flowchart / diagram_graph: after the last statement,
+        // consecutive _newline tokens (from whitespace-only lines) are ambiguous between the
+        // sep delimiter's repeat($._newline) and the trailing repeat1($._newline).
         // GLR resolves this at runtime — sep always fails without a following _flow_stmt.
-        [$.diagram_flow],
+        [$.diagram_flowchart],
+        [$.diagram_graph],
     ],
 
     extras: $ => [
@@ -319,7 +320,8 @@ module.exports = grammar({
                 $.diagram_state,
                 $.diagram_gantt,
                 $.diagram_pie,
-                $.diagram_flow,
+                $.diagram_flowchart,
+                $.diagram_graph,
                 $.diagram_er,
                 $.diagram_mindmap,
                 $.diagram_gitgraph,
@@ -727,8 +729,8 @@ module.exports = grammar({
         ),
 
         /// flow chart
-        diagram_flow: $ => seq(
-            choice(kwd("flowchart"), kwd("graph")),
+        diagram_flowchart: $ => seq(
+            kwd("flowchart"),
             choice(
                 $._flowchart_direction,
                 $._newline,
@@ -739,6 +741,16 @@ module.exports = grammar({
             optional(sep($._flow_stmt, seq(choice($._newline, ";"), repeat($._newline)))),
             // repeat1 instead of a single _newline so that whitespace-only trailing lines
             // are consumed: extras eat the spaces, repeat1 consumes each bare \n in turn.
+            optional(choice(seq(";", optional($._newline)), repeat1($._newline))),
+        ),
+        diagram_graph: $ => seq(
+            kwd("graph"),
+            choice(
+                $._flowchart_direction,
+                $._newline,
+            ),
+            repeat($._newline),
+            optional(sep($._flow_stmt, seq(choice($._newline, ";"), repeat($._newline)))),
             optional(choice(seq(";", optional($._newline)), repeat1($._newline))),
         ),
         _flowchart_direction: $ => choice(

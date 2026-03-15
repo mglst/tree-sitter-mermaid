@@ -957,7 +957,7 @@
     }
   },
   {
-    "type": "diagram_flow",
+    "type": "diagram_flowchart",
     "named": true,
     "fields": {},
     "children": {
@@ -1000,6 +1000,25 @@
       "types": [
         {
           "type": "_gitgraph_stmt",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "diagram_graph",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "_flow_stmt",
+          "named": true
+        },
+        {
+          "type": "_flowchart_direction",
           "named": true
         }
       ]
@@ -3535,7 +3554,7 @@
           "named": true
         },
         {
-          "type": "diagram_flow",
+          "type": "diagram_flowchart",
           "named": true
         },
         {
@@ -3544,6 +3563,10 @@
         },
         {
           "type": "diagram_gitgraph",
+          "named": true
+        },
+        {
+          "type": "diagram_graph",
           "named": true
         },
         {
