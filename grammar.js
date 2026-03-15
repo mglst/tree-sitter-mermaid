@@ -263,8 +263,20 @@ module.exports = grammar({
     /// meta information
     name: 'mermaid',
 
+    // Keyword extraction: plain string literals like "subgraph" and "end" only
+    // match as keywords when not immediately followed by a word character.
+    // Without this, "subgraph1" is lexed as keyword "subgraph" + token "1",
+    // which causes parse errors on valid Mermaid like `flowchart\n    subgraph1`.
+    //
+    // We use _flow_vertex_id_token (not _alpha_num_token) as the word token
+    // because it supports hyphens (foo-bar).  _alpha_num_token would stop at
+    // the hyphen, returning only "First" for "First-Task" and breaking
+    // hyphenated vertex IDs.
+    word: $ => $._flow_vertex_id_token,
+
     externals: $ => [
         $.class_reltype_aggregation,  // Handled by external scanner
+        $._flow_vertex_trailing_hyphen, // Handled by external scanner
     ],
 
     conflicts: $ => [
@@ -835,10 +847,15 @@ module.exports = grammar({
         // Middle-text label (-- text -->): must not allow consecutive dashes which would be
         // greedily consumed over the closing arrow token; keep the original alpha-num-token
         // behaviour so the arrow is always unambiguously tokenised.
-        _flow_arrow_text_mid: $ => repeat1(choice($._alpha_num_token, $.flow_text_quoted)),
+        _flow_arrow_text_mid: $ => repeat1(choice($._flow_vertex_id_token, $.flow_text_quoted)),
 
         flow_vertex_id: $ => choice(
             $._flow_vertex_id_token,
+            // Trailing-hyphen form: "Kebab-Case-" is a valid vertex ID in Mermaid.
+            // The external scanner for _flow_vertex_trailing_hyphen matches a single
+            // '-' only when it is immediately adjacent (no leading whitespace) and not
+            // followed by '-' or '>' (which would make it part of an arrow token).
+            seq($._flow_vertex_id_token, $._flow_vertex_trailing_hyphen),
             alias(kwd("direction"), $._flow_vertex_id_token),
         ),
 
@@ -923,7 +940,7 @@ module.exports = grammar({
             "end",
         ),
         flow_stmt_subgraph_inner: $ => repeat1(choice(seq($._flow_stmt, choice($._newline, ";")), $._newline, $.comment)),
-        flow_vertex_text: $ => repeat1($._alpha_num_token),
+        flow_vertex_text: $ => repeat1($._flow_vertex_id_token),
 
         /// ER diagram
         diagram_er: $ => seq(

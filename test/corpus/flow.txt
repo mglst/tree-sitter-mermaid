@@ -1834,3 +1834,55 @@ flowchart
       (flow_node
         (flow_vertex
           (flow_vertex_id))))))
+
+==========================
+Identifier starting with keyword prefix is a valid vertex (issue #N)
+==========================
+
+flowchart
+    subgraph1
+
+---
+
+(source_file
+  (diagram_flowchart
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))))
+
+==========================
+Trailing hyphen in vertex ID
+==========================
+
+flowchart
+    Kebab-Case-
+    Kebab-Case- --> B
+    A-->B
+
+---
+
+(source_file
+  (diagram_flowchart
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)))
+      (flow_link_simplelink
+        (flow_link_arrow))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)))
+      (flow_link_simplelink
+        (flow_link_arrow))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))))
