@@ -32,7 +32,8 @@
 #include <stdbool.h>
 
 enum TokenType {
-  CLASS_AGGREGATION,  ///< The 'o' token in UML aggregation relationships
+  CLASS_AGGREGATION,          ///< The 'o' token in UML aggregation relationships
+  FLOW_VERTEX_TRAILING_HYPHEN, ///< A trailing '-' in a vertex ID like "Foo-Bar-"
 };
 
 /**
@@ -139,6 +140,35 @@ bool tree_sitter_mermaid_external_scanner_scan(
                 lexer->result_symbol = CLASS_AGGREGATION;
                 return true;
             }
+        }
+    }
+
+    // Match a trailing '-' in a vertex ID (e.g. "Foo-Bar-").
+    //
+    // Mermaid accepts vertex IDs with trailing hyphens.  The regular token
+    // _flow_vertex_id_token cannot express this without also greedily consuming
+    // the leading '-' of a following '-->' arrow (maximal munch).  The external
+    // scanner avoids the ambiguity by peeking one character ahead:
+    //
+    //   "Foo-"    followed by \n / space / EOF / letter  →  match (trailing hyphen)
+    //   "Foo--->B"  the '-' is the start of '-->'         →  no match
+    //
+    // IMPORTANT: this scanner must NOT skip leading whitespace.  A space between
+    // the ID and the hyphen ("Foo -") is invalid in Mermaid and must not be
+    // silently swallowed.  The extras mechanism handles legitimate inter-token
+    // whitespace; here we want the hyphen to be immediately adjacent.
+    if (valid_symbols[FLOW_VERTEX_TRAILING_HYPHEN]) {
+        if (lexer->lookahead == '-') {
+            lexer->advance(lexer, false);   // tentatively consume '-'
+            int32_t next = lexer->lookahead;
+            // If followed by '-', '>', or '.' this is the start of an arrow token
+            // ('->' invalid arrow, '-->' solid arrow, '-.->' dotted arrow).
+            if (next != '-' && next != '>' && next != '.') {
+                lexer->mark_end(lexer);
+                lexer->result_symbol = FLOW_VERTEX_TRAILING_HYPHEN;
+                return true;
+            }
+            // Otherwise, do not match; tree-sitter will reset lexer position.
         }
     }
 
