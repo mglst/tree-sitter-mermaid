@@ -134,8 +134,8 @@ const tokens = {
     flowchart_direction_td: kwd("td"),
     flowchart_direction_bt: choice(kwd("bt"), "^"),
 
-    flow_text_literal: repeat1(choice(/[^|}\])\s\n;/\\"<>]+/, /<[^>]*>/)),
-    flow_text_literal_slash: repeat1(choice(/[^|}\])\s\n;\\"<>]+/, /<[^>]*>/)),
+    flow_text_literal: repeat1(choice(/[^|}\])\s\n;/\\"<>]+/, /<[^>]*>/, /\\n/)),
+    flow_text_literal_slash: repeat1(choice(/[^|}\])\s\n;\\"<>]+/, /<[^>]*>/, /\\n/)),
     flow_text_icon: token(prec(1, /[a-zA-Z]+:[a-zA-Z][a-zA-Z0-9]*(-[a-zA-Z][a-zA-Z0-9]*)*([ \t]+[a-zA-Z0-9_~!?]+)*/)),
     _flow_vertex_id_token: token(prec(-1, /[a-zA-Z0-9_~!?]+(-[a-zA-Z0-9_~!?]+)*/)),
 
@@ -843,7 +843,7 @@ module.exports = grammar({
 
         // Pipe-delimited label (-->|text|): allow full flow_text_literal so dashes, colons,
         // slashes, etc. work without quoting (the | delimiter resolves ambiguity).
-        flow_arrow_text: $ => choice($.flow_text_literal, $.flow_text_quoted),
+        flow_arrow_text: $ => choice($.flow_text_literal_slash, $.flow_text_quoted),
         // Middle-text label (-- text -->): must not allow consecutive dashes which would be
         // greedily consumed over the closing arrow token; keep the original alpha-num-token
         // behaviour so the arrow is always unambiguously tokenised.

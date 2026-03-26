@@ -245,7 +245,7 @@ flowchart LR
       (flow_link_arrowtext
         (flow_link_arrow)
         (flow_arrow_text
-          (flow_text_literal)))
+          (flow_text_literal_slash)))
       (flow_node
         (flow_vertex
           (flow_vertex_id))))
@@ -256,7 +256,7 @@ flowchart LR
       (flow_link_arrowtext
         (flow_link_arrow)
         (flow_arrow_text
-          (flow_text_literal)))
+          (flow_text_literal_slash)))
       (flow_node
         (flow_vertex
           (flow_vertex_id))))
@@ -532,7 +532,7 @@ flowchart TD
       (flow_link_arrowtext
         (flow_link_arrow)
         (flow_arrow_text
-          (flow_text_literal)))
+          (flow_text_literal_slash)))
       (flow_node
         (flow_vertex
           (flow_vertex_id)
@@ -565,7 +565,7 @@ flowchart TD
       (flow_link_arrowtext
         (flow_link_arrow)
         (flow_arrow_text
-          (flow_text_literal)))
+          (flow_text_literal_slash)))
       (flow_node
         (flow_vertex
           (flow_vertex_id)
@@ -1602,7 +1602,7 @@ flowchart TD
       (flow_link_arrowtext
         (flow_link_arrow)
         (flow_arrow_text
-          (flow_text_literal)))
+          (flow_text_literal_slash)))
       (flow_node
         (flow_vertex
           (flow_vertex_id))))
@@ -1613,7 +1613,7 @@ flowchart TD
       (flow_link_arrowtext
         (flow_link_arrow)
         (flow_arrow_text
-          (flow_text_literal)))
+          (flow_text_literal_slash)))
       (flow_node
         (flow_vertex
           (flow_vertex_id))))))
@@ -1638,7 +1638,7 @@ flowchart TD
       (flow_link_arrowtext
         (flow_link_arrow)
         (flow_arrow_text
-          (flow_text_literal)))
+          (flow_text_literal_slash)))
       (flow_node
         (flow_vertex
           (flow_vertex_id))))
@@ -1649,7 +1649,7 @@ flowchart TD
       (flow_link_arrowtext
         (flow_link_arrow)
         (flow_arrow_text
-          (flow_text_literal)))
+          (flow_text_literal_slash)))
       (flow_node
         (flow_vertex
           (flow_vertex_id))))))
@@ -1883,6 +1883,37 @@ flowchart
           (flow_vertex_id)))
       (flow_link_simplelink
         (flow_link_arrow))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id))))))
+
+==========================
+Backslash-n line break in node label and edge label (BUG-7)
+==========================
+
+flowchart TD
+    Root[render_root\nServe React SPA]
+    Browser -->|GET /\npage| Root
+
+---
+
+(source_file
+  (diagram_flowchart
+    (flowchart_direction_td)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_square
+            (flow_text_literal_slash)))))
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)))
+      (flow_link_arrowtext
+        (flow_link_arrow)
+        (flow_arrow_text
+          (flow_text_literal_slash)))
       (flow_node
         (flow_vertex
           (flow_vertex_id))))))

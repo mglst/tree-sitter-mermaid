@@ -1584,7 +1584,7 @@
       "required": false,
       "types": [
         {
-          "type": "flow_text_literal",
+          "type": "flow_text_literal_slash",
           "named": true
         },
         {

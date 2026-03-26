@@ -3680,7 +3680,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "flow_text_literal"
+          "name": "flow_text_literal_slash"
         },
         {
           "type": "SYMBOL",
@@ -8335,6 +8335,10 @@
           {
             "type": "PATTERN",
             "value": "<[^>]*>"
+          },
+          {
+            "type": "PATTERN",
+            "value": "\\\\n"
           }
         ]
       }
@@ -8351,6 +8355,10 @@
           {
             "type": "PATTERN",
             "value": "<[^>]*>"
+          },
+          {
+            "type": "PATTERN",
+            "value": "\\\\n"
           }
         ]
       }
