@@ -1584,6 +1584,10 @@
       "required": false,
       "types": [
         {
+          "type": "flow_markdown",
+          "named": true
+        },
+        {
           "type": "flow_text_literal_slash",
           "named": true
         },
@@ -1676,6 +1680,21 @@
       "types": [
         {
           "type": "flow_link_arrow",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "flow_markdown",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "md_text",
           "named": true
         }
       ]
@@ -1781,6 +1800,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "flow_markdown",
+          "named": true
+        },
         {
           "type": "flow_stmt_subgraph_inner",
           "named": true
@@ -1906,6 +1929,10 @@
       "required": true,
       "types": [
         {
+          "type": "flow_markdown",
+          "named": true
+        },
+        {
           "type": "flow_text_icon",
           "named": true
         },
@@ -1928,6 +1955,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "flow_markdown",
+          "named": true
+        },
         {
           "type": "flow_text_icon",
           "named": true
@@ -1952,6 +1983,10 @@
       "required": true,
       "types": [
         {
+          "type": "flow_markdown",
+          "named": true
+        },
+        {
           "type": "flow_text_icon",
           "named": true
         },
@@ -1974,6 +2009,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "flow_markdown",
+          "named": true
+        },
         {
           "type": "flow_text_icon",
           "named": true
@@ -1998,6 +2037,10 @@
       "required": true,
       "types": [
         {
+          "type": "flow_markdown",
+          "named": true
+        },
+        {
           "type": "flow_text_icon",
           "named": true
         },
@@ -2020,6 +2063,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "flow_markdown",
+          "named": true
+        },
         {
           "type": "flow_text_icon",
           "named": true
@@ -2059,6 +2106,10 @@
       "required": true,
       "types": [
         {
+          "type": "flow_markdown",
+          "named": true
+        },
+        {
           "type": "flow_text_icon",
           "named": true
         },
@@ -2081,6 +2132,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "flow_markdown",
+          "named": true
+        },
         {
           "type": "flow_text_icon",
           "named": true
@@ -2105,6 +2160,10 @@
       "required": true,
       "types": [
         {
+          "type": "flow_markdown",
+          "named": true
+        },
+        {
           "type": "flow_text_icon",
           "named": true
         },
@@ -2127,6 +2186,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "flow_markdown",
+          "named": true
+        },
         {
           "type": "flow_text_icon",
           "named": true
@@ -2151,6 +2214,10 @@
       "required": true,
       "types": [
         {
+          "type": "flow_markdown",
+          "named": true
+        },
+        {
           "type": "flow_text_icon",
           "named": true
         },
@@ -2173,6 +2240,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "flow_markdown",
+          "named": true
+        },
         {
           "type": "flow_text_icon",
           "named": true
@@ -2197,6 +2268,10 @@
       "required": true,
       "types": [
         {
+          "type": "flow_markdown",
+          "named": true
+        },
+        {
           "type": "flow_text_icon",
           "named": true
         },
@@ -2220,6 +2295,10 @@
       "required": true,
       "types": [
         {
+          "type": "flow_markdown",
+          "named": true
+        },
+        {
           "type": "flow_text_icon",
           "named": true
         },
@@ -2242,6 +2321,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "flow_markdown",
+          "named": true
+        },
         {
           "type": "flow_text_icon",
           "named": true
@@ -2270,6 +2353,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "flow_markdown",
+          "named": true
+        },
         {
           "type": "flow_text_icon",
           "named": true

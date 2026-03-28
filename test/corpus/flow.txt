@@ -1917,3 +1917,63 @@ flowchart TD
       (flow_node
         (flow_vertex
           (flow_vertex_id))))))
+
+==========================
+Markdown strings in node labels and edge labels
+==========================
+
+flowchart LR
+  a("`The **cat** in the hat`") -- "`Bold edge`" --> b{{"`The **dog**`"}}
+
+---
+
+(source_file
+  (diagram_flowchart
+    (flowchart_direction_lr)
+    (flow_stmt_vertice
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_round
+            (flow_markdown
+              (md_text)))))
+      (flow_link_middletext
+        (flow_link_arrow_start)
+        (flow_arrow_text
+          (flow_markdown
+            (md_text)))
+        (flow_link_arrow))
+      (flow_node
+        (flow_vertex
+          (flow_vertex_id)
+          (flow_vertex_hexagon
+            (flow_markdown
+              (md_text))))))))
+
+==========================
+Markdown string as subgraph label
+==========================
+
+flowchart LR
+  subgraph "`**Section**`"
+    A --> B
+  end
+
+---
+
+(source_file
+  (diagram_flowchart
+    (flowchart_direction_lr)
+    (flow_stmt_subgraph
+      (flow_markdown
+        (md_text))
+      (flow_stmt_subgraph_inner
+        (flow_stmt_vertice
+          (flow_node
+            (flow_vertex
+              (flow_vertex_id)))
+          (flow_link_simplelink
+            (flow_link_arrow))
+          (flow_node
+            (flow_vertex
+              (flow_vertex_id))))))))

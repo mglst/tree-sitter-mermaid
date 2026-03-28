@@ -3675,6 +3675,32 @@
         }
       ]
     },
+    "flow_markdown": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_md_start"
+          },
+          {
+            "type": "ALIAS",
+            "content": {
+              "type": "PATTERN",
+              "value": "[^`\"]+"
+            },
+            "named": true,
+            "value": "md_text"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_md_end"
+          }
+        ]
+      }
+    },
     "flow_arrow_text": {
       "type": "CHOICE",
       "members": [
@@ -3685,6 +3711,10 @@
         {
           "type": "SYMBOL",
           "name": "flow_text_quoted"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "flow_markdown"
         }
       ]
     },
@@ -3700,6 +3730,10 @@
           {
             "type": "SYMBOL",
             "name": "flow_text_quoted"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "flow_markdown"
           }
         ]
       }
@@ -4299,6 +4333,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "flow_markdown"
+        },
+        {
+          "type": "SYMBOL",
           "name": "flow_text_icon"
         }
       ]
@@ -4313,6 +4351,10 @@
         {
           "type": "SYMBOL",
           "name": "flow_text_quoted"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "flow_markdown"
         },
         {
           "type": "SYMBOL",
@@ -4343,6 +4385,10 @@
                     {
                       "type": "SYMBOL",
                       "name": "flow_text_quoted"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "flow_markdown"
                     }
                   ]
                 },
@@ -4366,6 +4412,10 @@
                             {
                               "type": "SYMBOL",
                               "name": "flow_text_quoted"
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "flow_markdown"
                             }
                           ]
                         },

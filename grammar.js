@@ -841,13 +841,20 @@ module.exports = grammar({
         // Quoted text node — exposes content without surrounding quotes via flow_text_quoted_content child.
         flow_text_quoted: $ => seq('"', alias(/[^"]*/, $.flow_text_quoted_content), '"'),
 
+        // Markdown string — "`…`" — takes precedence over flow_text_quoted.
+        flow_markdown: $ => prec(1, seq(
+            $._md_start,
+            alias(/[^`"]+/, $.md_text),
+            $._md_end,
+        )),
+
         // Pipe-delimited label (-->|text|): allow full flow_text_literal so dashes, colons,
         // slashes, etc. work without quoting (the | delimiter resolves ambiguity).
-        flow_arrow_text: $ => choice($.flow_text_literal_slash, $.flow_text_quoted),
+        flow_arrow_text: $ => choice($.flow_text_literal_slash, $.flow_text_quoted, $.flow_markdown),
         // Middle-text label (-- text -->): must not allow consecutive dashes which would be
         // greedily consumed over the closing arrow token; keep the original alpha-num-token
         // behaviour so the arrow is always unambiguously tokenised.
-        _flow_arrow_text_mid: $ => repeat1(choice($._flow_vertex_id_token, $.flow_text_quoted)),
+        _flow_arrow_text_mid: $ => repeat1(choice($._flow_vertex_id_token, $.flow_text_quoted, $.flow_markdown)),
 
         flow_vertex_id: $ => choice(
             $._flow_vertex_id_token,
@@ -923,16 +930,16 @@ module.exports = grammar({
         flow_vertex_inv_trapezoid: $ => seq( "[\\", $._flow_text, "/]" ),
         flow_vertex_leanright: $ => seq("[/", $._flow_text, "/]" ),
         flow_vertex_leanleft: $ => seq( "[\\", $._flow_text, "\\]" ),
-        _flow_text: $ => choice($.flow_text_literal, $.flow_text_quoted, $.flow_text_icon),
-        _flow_text_slash: $ => choice($.flow_text_literal_slash, $.flow_text_quoted, $.flow_text_icon),
+        _flow_text: $ => choice($.flow_text_literal, $.flow_text_quoted, $.flow_markdown, $.flow_text_icon),
+        _flow_text_slash: $ => choice($.flow_text_literal_slash, $.flow_text_quoted, $.flow_markdown, $.flow_text_icon),
 
         flow_stmt_subgraph: $ => seq(
             "subgraph",
             optional(
                 seq(
                     // Accept quoted names in addition to plain identifiers (issue #9)
-                    choice($.flow_vertex_text, $.flow_text_quoted),
-                    optional(seq("[", choice($.flow_vertex_text, $.flow_text_quoted), "]")),
+                    choice($.flow_vertex_text, $.flow_text_quoted, $.flow_markdown),
+                    optional(seq("[", choice($.flow_vertex_text, $.flow_text_quoted, $.flow_markdown), "]")),
                 ),
             ),
             choice(";", $._newline),
